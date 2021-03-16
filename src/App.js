@@ -9,7 +9,7 @@ class App extends React.Component {
 
 	OnInputSubmit = async (term) => {
 		axios
-			.get(`https://api.jikan.moe/v3/search/anime?q=${term}`)
+			.get(`https://api.jikan.moe/v3/search/anime?q=${term}&limit=5`)
 			.then((res) => {
 				const anime_results = res.data.results;
 				this.setState({ animes: anime_results });

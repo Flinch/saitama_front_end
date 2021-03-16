@@ -5,7 +5,6 @@ class SearchBar extends React.Component {
 
 	OnTermChange = (event) => {
 		this.setState({ term: event.target.value });
-		//console.log(this.state.term);
 	};
 
 	OnSubmit = (event) => {
@@ -15,7 +14,7 @@ class SearchBar extends React.Component {
 
 	render() {
 		return (
-			<div className="ui form">
+			<div className="ui container form">
 				<form className="ui form" onSubmit={this.OnSubmit}>
 					<div className="field">
 						<label> Enter Search </label>
