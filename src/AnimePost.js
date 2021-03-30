@@ -1,8 +1,7 @@
 import React, { useState, useEffect } from "react";
-import SelectedAnimePost from "./SelectedAnimePost";
 
 const AnimePost = ({ anime, userID }) => {
-	const [status, setStatus] = useState("Default");
+	const [status, setStatus] = useState({ notice: "Add to List", color: "" });
 
 	const onAnimeSelected = () => {
 		fetch(
@@ -16,19 +15,9 @@ const AnimePost = ({ anime, userID }) => {
 		)
 			.then((response) => response.json())
 			.then((data) => {
-				console.log(data);
-				setStatus(data.notice);
-				console.log(status);
+				setStatus(data);
 			});
 	};
-
-	const getNoticeData = (notice) => {
-		return notice;
-	};
-
-	{
-		/*useEffect(() => {}, [status]);*/
-	}
 
 	return (
 		<div class="column">
@@ -44,12 +33,12 @@ const AnimePost = ({ anime, userID }) => {
 					</div>
 				</div>
 				<div
-					class={`ui bottom attached button`}
+					class={`ui ${status.statusColor} bottom attached button`}
 					onClick={() => {
 						onAnimeSelected();
 					}}
 				>
-					<p> {status} </p>
+					<p> {status.notice} </p>
 				</div>
 			</div>
 		</div>
