@@ -1,9 +1,12 @@
 import React from "react";
 import ReactDOM from "react-dom";
-import SearchBar from "./SearchBar";
 import axios from "axios";
-import AnimeListings from "./AnimeListings";
 import LoginForm from "./LoginForm";
+import "./App.css";
+import Home from "./Home";
+import Collections from "./Collections";
+import { Header, Icon, Image, Menu, Segment, Sidebar } from "semantic-ui-react";
+import { BrowserRouter as Router, Switch, Route, Link } from "react-router-dom";
 
 class App extends React.Component {
 	state = { animes: [], isloggedin: 0, userID: 0 };
@@ -18,18 +21,12 @@ class App extends React.Component {
 	};
 
 	logUserOut = () => {
-		fetch(`http://localhost:3000/destroysession`, {
-			method: "get",
-			headers: {
-				"Content-Type": "application/json",
-			},
-		});
+		this.setState({ isloggedin: 0, userID: 0 });
 	};
 
-	OnLoginSubmit = async (isLoggedin, userID) => {
+	OnLoginSubmit = (isLoggedin, userID) => {
 		this.setState({ isloggedin: isLoggedin });
 		this.setState({ userID: userID });
-		console.log(this.state.userID);
 	};
 
 	render() {
@@ -37,14 +34,64 @@ class App extends React.Component {
 			return <LoginForm OnLoginSubmit={this.OnLoginSubmit} />;
 		} else {
 			return (
-				<div>
-					<button onClick={this.logUserOut}> Log out </button>
-					<SearchBar OnInputSubmit={this.OnInputSubmit} />
-					<AnimeListings
-						anime_data={this.state.animes}
-						userID={this.state.userID}
-					/>
-				</div>
+				<Router>
+					<div style={{ height: "100vh" }}>
+						<Sidebar.Pushable as={Segment}>
+							<Sidebar
+								as={Menu}
+								animation="overlay"
+								icon="labeled"
+								inverted
+								vertical
+								visible
+								width="extra-thin"
+							>
+								<Menu.Item as="a">
+									<Icon name="napster" />
+									<Link to="/">Home</Link>
+								</Menu.Item>
+								<Menu.Item as="a">
+									<Icon name="book" />
+									<Link to="/collections">Collections</Link>
+								</Menu.Item>
+								<Menu.Item
+									as="a"
+									style={{
+										position: "absolute",
+										bottom: "0px",
+									}}
+									onClick={this.logUserOut}
+								>
+									<Icon name="napstere" />
+									Malik
+								</Menu.Item>
+							</Sidebar>
+							<Sidebar.Pusher>
+								<Segment
+									basic
+									style={{
+										overflow: "auto",
+										maxHeight: "100vh",
+									}}
+								>
+									<Switch>
+										<Route exact path="/">
+											<Home userID={this.state.userID} />
+										</Route>
+										<Route path="/collections">
+											<Collections
+												userID={this.state.userID}
+											/>
+										</Route>
+										{/*<Route path="/about">
+											<Home />
+										</Route>*/}
+									</Switch>
+								</Segment>
+							</Sidebar.Pusher>
+						</Sidebar.Pushable>
+					</div>
+				</Router>
 			);
 		}
 	}
