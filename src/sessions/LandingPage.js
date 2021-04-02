@@ -1,8 +1,8 @@
 import React from "react";
 import LoginForm from "./LoginForm";
 import SignupForm from "./SignupForm";
-import "./App.css";
-import saitama from "./img/saitama.svg";
+import "../app_components/App.css";
+import saitama from "../img/saitama.svg";
 
 class LandingPage extends React.Component {
 	state = { login: 0 };
@@ -29,7 +29,10 @@ class LandingPage extends React.Component {
 		return (
 			<div className="ui container col-5">
 				<div className="landing-page-content">
-					<h1>Saitama</h1>
+					<h1>
+						<span className="gold">S</span>ait
+						<span className="gold">a</span>ma
+					</h1>
 					<button onClick={this.userClickLogin} className="ui button">
 						{" "}
 						Login Form{" "}

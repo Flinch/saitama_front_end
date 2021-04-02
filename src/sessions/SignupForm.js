@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import ErrorBar from "./ErrorBar";
+import ErrorBar from "../ErrorBar";
 
 const SignupForm = ({ OnLoginSubmit }) => {
 	const [username, setUsername] = useState("");
@@ -32,7 +32,7 @@ const SignupForm = ({ OnLoginSubmit }) => {
 	return (
 		<div className="ui card login-form">
 			<div className="content" style={{ backgroundColor: "white" }}>
-				<form class="container ui form">
+				<form className="container ui form">
 					<div className="field">
 						<label>Username</label>
 						<input
@@ -68,7 +68,7 @@ const SignupForm = ({ OnLoginSubmit }) => {
 					</div>
 					<div className="center">
 						<button
-							class="ui button"
+							className="ui button"
 							type="button"
 							onClick={() => {
 								VerifySignup();

@@ -3,7 +3,7 @@ import "./App.css";
 
 const SuchEmpty = () => {
 	return (
-		<div class="ui container such-empty">
+		<div className="ui container such-empty">
 			<p> Wow, Such Empty </p>
 			<p style={{ fontSize: "12px", marginTop: "-20px" }}>
 				{" "}

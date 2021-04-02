@@ -1,13 +1,12 @@
-import React, { useState } from "react";
-import ErrorBar from "./ErrorBar.js";
-import "./LandingPage.css";
+import React, { useState, useCallback } from "react";
+import ErrorBar from "../ErrorBar";
 
 const LoginForm = ({ OnLoginSubmit }) => {
 	const [username, setUsername] = useState("");
 	const [password, setPassword] = useState("");
 	const [incorrectCreds, setIncorrectCreds] = useState(0);
 
-	const VerifyLogin = (event) => {
+	const VerifyLogin = useCallback(() => {
 		fetch(
 			`http://localhost:3000/getuser?user=${username}&password=${password}`,
 			{
@@ -22,12 +21,12 @@ const LoginForm = ({ OnLoginSubmit }) => {
 				OnLoginSubmit(data.isUser, data.userID, data.username);
 				setIncorrectCreds(1);
 			});
-	};
+	});
 
 	return (
 		<div className="ui card login-form">
 			<div className="content" style={{ backgroundColor: "white" }}>
-				<form class="container ui form">
+				<form className="container ui form">
 					<div className="field">
 						<label>Username</label>
 						<input
@@ -52,7 +51,7 @@ const LoginForm = ({ OnLoginSubmit }) => {
 					</div>
 					<div className="center">
 						<button
-							class="ui button"
+							className="ui button"
 							type="button"
 							onClick={() => {
 								VerifyLogin();

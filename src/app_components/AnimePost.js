@@ -32,7 +32,6 @@ const AnimePost = ({ anime, userID, duration }) => {
 						notice: "Already Added to List",
 						statusColor: "yellow",
 					});
-					console.log(status.color);
 				} else {
 					setStatus(data);
 				}
@@ -48,10 +47,10 @@ const AnimePost = ({ anime, userID, duration }) => {
 	};
 
 	return (
-		<div class="column" data-aos="fade-right">
-			<div class="ui fluid card">
-				<div class="content" style={{ BackgroundColor: "#E0E1E2" }}>
-					<p class="ui center aligned header">{anime.title}</p>
+		<div className="column" data-aos="fade-right">
+			<div className="ui fluid card">
+				<div className="content" style={{ BackgroundColor: "#E0E1E2" }}>
+					<p className="ui center aligned header">{anime.title}</p>
 				</div>
 				<div class="ui slide masked reveal image">
 					<img
@@ -60,7 +59,7 @@ const AnimePost = ({ anime, userID, duration }) => {
 					/>
 
 					<div
-						class="hidden content slide"
+						className="hidden content slide"
 						style={{ overflow: "auto" }}
 					>
 						{" "}
@@ -68,7 +67,7 @@ const AnimePost = ({ anime, userID, duration }) => {
 					</div>
 				</div>
 				<div
-					class={`ui ${status.statusColor} bottom attached button`}
+					className={`ui ${status.statusColor} bottom attached button`}
 					onClick={() => {
 						onAnimeSelected();
 					}}

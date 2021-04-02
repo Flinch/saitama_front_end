@@ -4,7 +4,6 @@ import "./AnimeListings.css";
 
 const AnimeListings = ({ anime_data, userID, username }) => {
 	const Listings = anime_data.map((anime, index) => {
-		console.log(anime.synopsis.full);
 		return (
 			<AnimePost
 				anime={anime}
@@ -18,7 +17,9 @@ const AnimeListings = ({ anime_data, userID, username }) => {
 	return (
 		<div>
 			<h1
-				class={anime_data.length === 0 ? "hideHeading" : "showHeading"}
+				className={
+					anime_data.length === 0 ? "hideHeading" : "showHeading"
+				}
 				data-aos="fade-up"
 			>
 				{" "}

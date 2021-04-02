@@ -117,6 +117,10 @@
 	margin-top: 60px;
 }
 
+.gold {
+	color: #fece2f;
+}
+
 /*-- Hover classes*/
 /* Bob */
 @-webkit-keyframes hvr-bob {

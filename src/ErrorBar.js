@@ -2,8 +2,8 @@ import React from "react";
 
 const ErrorBar = ({ msg }) => {
 	return (
-		<div class="ui negative message">
-			<div class="header">{msg}</div>
+		<div className="ui negative message">
+			<div className="header">{msg}</div>
 		</div>
 	);
 };

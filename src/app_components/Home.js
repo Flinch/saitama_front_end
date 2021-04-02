@@ -2,10 +2,10 @@ import React from "react";
 import ReactDOM from "react-dom";
 import SearchBar from "./SearchBar";
 import axios from "axios";
-import ErrorBar from "./ErrorBar";
+import ErrorBar from "../ErrorBar";
 import AnimeListings from "./AnimeListings";
-import saitama from "./img/saitama-50.svg";
-import Loading from "./Loading";
+import saitama from "../img/saitama-50.svg";
+import Loading from "../Loading";
 import AOS from "aos";
 import "aos/dist/aos.css";
 import "./App.css";
@@ -22,7 +22,6 @@ class Home extends React.Component {
 
 	constructor(props) {
 		super(props);
-		console.log(this.state.firstLogin);
 	}
 
 	componentDidMount = (props) => {
@@ -70,7 +69,7 @@ class Home extends React.Component {
 						<div data-aos="fade-up">
 							{this.state.firstLogin === "firstLogin" ? (
 								<img
-									class="saitama-img hvr-bob"
+									className="saitama-img hvr-bob"
 									src={saitama}
 								/>
 							) : (

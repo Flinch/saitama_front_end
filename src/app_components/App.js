@@ -1,11 +1,10 @@
 import React from "react";
 import ReactDOM from "react-dom";
 import axios from "axios";
-import LoginForm from "./LoginForm";
 import "./App.css";
 import Home from "./Home";
 import Collections from "./Collections";
-import LandingPage from "./LandingPage";
+import LandingPage from "../sessions/LandingPage";
 import {
 	Header,
 	Icon,
@@ -43,15 +42,6 @@ class App extends React.Component {
 		return str.charAt(0).toUpperCase() + str.slice(1);
 	}
 
-	OnInputSubmit = async (term) => {
-		axios
-			.get(`https://api.jikan.moe/v3/search/anime?q=${term}&limit=5`)
-			.then((res) => {
-				const anime_results = res.data.results;
-				this.setState({ animes: anime_results });
-			});
-	};
-
 	logUserOut = () => {
 		this.setState({ isloggedin: 0, userID: 0 });
 	};
@@ -66,7 +56,6 @@ class App extends React.Component {
 
 	render() {
 		if (this.state.isloggedin) {
-			console.log(this.contextRef);
 			return (
 				<Router>
 					<div>
@@ -82,9 +71,8 @@ class App extends React.Component {
 							>
 								<Menu.Item as="a">
 									<Icon name="napster" size="large" />
-									<Link to="/">
-										{this.Capitalize(this.state.username)}
-									</Link>
+
+									{this.Capitalize(this.state.username)}
 								</Menu.Item>
 								<Menu.Item
 									as="a"
@@ -105,7 +93,7 @@ class App extends React.Component {
 										height: "100vh",
 									}}
 								>
-									<div class="sticky ui two item menu">
+									<div className="sticky ui two item menu">
 										<Menu.Item
 											as={Link}
 											to="/home"
