@@ -5,11 +5,43 @@ import LoginForm from "./LoginForm";
 import "./App.css";
 import Home from "./Home";
 import Collections from "./Collections";
-import { Header, Icon, Image, Menu, Segment, Sidebar } from "semantic-ui-react";
-import { BrowserRouter as Router, Switch, Route, Link } from "react-router-dom";
+import LandingPage from "./LandingPage";
+import {
+	Header,
+	Icon,
+	Image,
+	Menu,
+	Segment,
+	Sidebar,
+	Sticky,
+} from "semantic-ui-react";
+import {
+	BrowserRouter as Router,
+	Switch,
+	Route,
+	Link,
+	Redirect,
+} from "react-router-dom";
 
 class App extends React.Component {
-	state = { animes: [], isloggedin: 0, userID: 0 };
+	state = {
+		animes: [],
+		isloggedin: 0,
+		userID: 0,
+		username: "",
+		activeItem: "home",
+	};
+
+	constructor() {
+		super();
+		this.contextRef = React.createRef();
+	}
+
+	handleItemClick = (e, { name }) => this.setState({ activeItem: name });
+
+	Capitalize(str) {
+		return str.charAt(0).toUpperCase() + str.slice(1);
+	}
 
 	OnInputSubmit = async (term) => {
 		axios
@@ -24,18 +56,20 @@ class App extends React.Component {
 		this.setState({ isloggedin: 0, userID: 0 });
 	};
 
-	OnLoginSubmit = (isLoggedin, userID) => {
-		this.setState({ isloggedin: isLoggedin });
-		this.setState({ userID: userID });
+	OnLoginSubmit = (isLoggedin, userID, username) => {
+		this.setState({
+			isloggedin: isLoggedin,
+			userID: userID,
+			username: username,
+		});
 	};
 
 	render() {
-		if (!this.state.isloggedin) {
-			return <LoginForm OnLoginSubmit={this.OnLoginSubmit} />;
-		} else {
+		if (this.state.isloggedin) {
+			console.log(this.contextRef);
 			return (
 				<Router>
-					<div style={{ height: "100vh" }}>
+					<div>
 						<Sidebar.Pushable as={Segment}>
 							<Sidebar
 								as={Menu}
@@ -44,38 +78,74 @@ class App extends React.Component {
 								inverted
 								vertical
 								visible
-								width="extra-thin"
+								width="thin"
 							>
 								<Menu.Item as="a">
-									<Icon name="napster" />
-									<Link to="/">Home</Link>
-								</Menu.Item>
-								<Menu.Item as="a">
-									<Icon name="book" />
-									<Link to="/collections">Collections</Link>
+									<Icon name="napster" size="large" />
+									<Link to="/">
+										{this.Capitalize(this.state.username)}
+									</Link>
 								</Menu.Item>
 								<Menu.Item
 									as="a"
-									style={{
-										position: "absolute",
-										bottom: "0px",
-									}}
+									className="logout-button"
 									onClick={this.logUserOut}
 								>
-									<Icon name="napstere" />
-									Malik
+									{" "}
+									<Icon name="paper plane" />
+									Logout
 								</Menu.Item>
 							</Sidebar>
 							<Sidebar.Pusher>
+								<Redirect to="/home" />
 								<Segment
 									basic
 									style={{
 										overflow: "auto",
-										maxHeight: "100vh",
+										height: "100vh",
 									}}
 								>
+									<div class="sticky ui two item menu">
+										<Menu.Item
+											as={Link}
+											to="/home"
+											name="home"
+											active={
+												this.state.activeItem === "home"
+											}
+											onClick={this.handleItemClick}
+										>
+											Home
+										</Menu.Item>
+
+										<Menu.Item
+											as={Link}
+											to="/collections"
+											name="collections"
+											active={
+												this.state.activeItem ===
+												"collections"
+											}
+											onClick={this.handleItemClick}
+										>
+											Collections
+										</Menu.Item>
+										{/*<Menu.Item
+											as={Link}
+											to=""
+											name="feeling_lucky"
+											active={
+												this.state.activeItem ===
+												"feeling_lucky"
+											}
+											onClick={this.handleItemClick}
+										>
+											Feeling Lucky
+										</Menu.Item>*/}
+									</div>
+
 									<Switch>
-										<Route exact path="/">
+										<Route exact path="/home">
 											<Home userID={this.state.userID} />
 										</Route>
 										<Route path="/collections">
@@ -92,6 +162,15 @@ class App extends React.Component {
 						</Sidebar.Pushable>
 					</div>
 				</Router>
+			);
+		} else {
+			return (
+				<div>
+					<Router>
+						<Redirect to="/" />
+						<LandingPage OnLoginSubmit={this.OnLoginSubmit} />
+					</Router>
+				</div>
 			);
 		}
 	}

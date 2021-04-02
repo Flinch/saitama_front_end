@@ -11,10 +11,7 @@ const AnimePostCollections = ({ anime }) => {
 					<img src={anime.image} class="visible content" />
 					<div class="hidden content slide">
 						{" "}
-						<p class="ui center aligned">
-							{" "}
-							{anime.description}{" "}
-						</p>{" "}
+						<p> {anime.description} </p>{" "}
 					</div>
 				</div>
 			</div>

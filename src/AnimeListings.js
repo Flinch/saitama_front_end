@@ -2,12 +2,31 @@ import React from "react";
 import AnimePost from "./AnimePost";
 import "./AnimeListings.css";
 
-const AnimeListings = ({ anime_data, userID }) => {
-	const Listings = anime_data.map((anime) => {
-		return <AnimePost anime={anime} userID={userID} key={anime.mal_id} />;
+const AnimeListings = ({ anime_data, userID, username }) => {
+	const Listings = anime_data.map((anime, index) => {
+		console.log(anime.synopsis.full);
+		return (
+			<AnimePost
+				anime={anime}
+				userID={userID}
+				username={username}
+				key={anime.mal_id}
+			/>
+		);
 	});
 
-	return <div className="ui five column grid">{Listings} </div>;
+	return (
+		<div>
+			<h1
+				class={anime_data.length === 0 ? "hideHeading" : "showHeading"}
+				data-aos="fade-up"
+			>
+				{" "}
+				Umm ... Which One?{" "}
+			</h1>
+			<div className="ui five column grid">{Listings}</div>
+		</div>
+	);
 };
 
 export default AnimeListings;

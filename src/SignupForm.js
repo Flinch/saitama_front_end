@@ -1,15 +1,16 @@
 import React, { useState } from "react";
-import ErrorBar from "./ErrorBar.js";
-import "./LandingPage.css";
+import ErrorBar from "./ErrorBar";
 
-const LoginForm = ({ OnLoginSubmit }) => {
+const SignupForm = ({ OnLoginSubmit }) => {
 	const [username, setUsername] = useState("");
+	const [email, setEmail] = useState("");
 	const [password, setPassword] = useState("");
-	const [incorrectCreds, setIncorrectCreds] = useState(0);
+	const [errorMsg, setErrorMsg] = useState([""]);
+	const [invalidCreds, setInvalidCreds] = useState(0);
 
-	const VerifyLogin = (event) => {
+	const VerifySignup = () => {
 		fetch(
-			`http://localhost:3000/getuser?user=${username}&password=${password}`,
+			`http://localhost:3000/userSignup?username=${username}&password=${password}&email=${email}`,
 			{
 				method: "get",
 				headers: {
@@ -19,8 +20,12 @@ const LoginForm = ({ OnLoginSubmit }) => {
 		)
 			.then((response) => response.json())
 			.then((data) => {
-				OnLoginSubmit(data.isUser, data.userID, data.username);
-				setIncorrectCreds(1);
+				if (data.status) {
+					OnLoginSubmit(1, data.userID, username);
+				} else {
+					setErrorMsg(data.message);
+					setInvalidCreds(1);
+				}
 			});
 	};
 
@@ -40,6 +45,17 @@ const LoginForm = ({ OnLoginSubmit }) => {
 						/>
 					</div>
 					<div className="field">
+						<label>Email</label>
+						<input
+							type="text"
+							name="last-name"
+							placeholder=""
+							onChange={(e) => {
+								setEmail(e.target.value);
+							}}
+						/>
+					</div>
+					<div className="field">
 						<label>Password</label>
 						<input
 							type="password"
@@ -55,14 +71,14 @@ const LoginForm = ({ OnLoginSubmit }) => {
 							class="ui button"
 							type="button"
 							onClick={() => {
-								VerifyLogin();
+								VerifySignup();
 							}}
 						>
-							Login
+							Signup
 						</button>
 					</div>
-					{incorrectCreds ? (
-						<ErrorBar msg="We couldn't verify your credentials" />
+					{invalidCreds ? (
+						<ErrorBar msg={errorMsg.toString("")} />
 					) : null}
 				</form>
 			</div>
@@ -70,4 +86,4 @@ const LoginForm = ({ OnLoginSubmit }) => {
 	);
 };
 
-export default LoginForm;
+export default SignupForm;

@@ -1,7 +1,19 @@
 import React, { useState, useEffect } from "react";
+import "./AnimeListings.css";
+import AOS from "aos";
+import "aos/dist/aos.css";
+import "./App.css";
+import TextTruncate from "react-text-truncate";
 
-const AnimePost = ({ anime, userID }) => {
-	const [status, setStatus] = useState({ notice: "Add to List", color: "" });
+const AnimePost = ({ anime, userID, duration }) => {
+	const [status, setStatus] = useState({
+		notice: "Add to List",
+		statusColor: "",
+	});
+
+	useEffect(() => {
+		AOS.init({});
+	}, []);
 
 	const onAnimeSelected = () => {
 		fetch(
@@ -15,19 +27,42 @@ const AnimePost = ({ anime, userID }) => {
 		)
 			.then((response) => response.json())
 			.then((data) => {
-				setStatus(data);
+				if (data.notice.toString() === "Mal has already been taken") {
+					setStatus({
+						notice: "Already Added to List",
+						statusColor: "yellow",
+					});
+					console.log(status.color);
+				} else {
+					setStatus(data);
+				}
+			})
+			.catch((error) => {
+				if (error.response) {
+					setStatus({
+						notice: "Something Went Wrong. Try again",
+						statusColor: "red",
+					});
+				}
 			});
 	};
 
 	return (
-		<div class="column">
+		<div class="column" data-aos="fade-right">
 			<div class="ui fluid card">
-				<div class="content">
+				<div class="content" style={{ BackgroundColor: "#E0E1E2" }}>
 					<p class="ui center aligned header">{anime.title}</p>
 				</div>
 				<div class="ui slide masked reveal image">
-					<img src={anime.image_url} class="visible content" />
-					<div class="hidden content slide">
+					<img
+						src={anime.image_url}
+						className="visible content max-height"
+					/>
+
+					<div
+						class="hidden content slide"
+						style={{ overflow: "auto" }}
+					>
 						{" "}
 						<p class="ui center aligned"> {anime.synopsis} </p>{" "}
 					</div>
