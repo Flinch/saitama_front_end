@@ -24,8 +24,8 @@
 
 .ui.card > .content > .header,
 .ui.cards > .card > .content > .header {
-	font-weight: 200;
-	font-size: 16px;
+	font-weight: 300;
+	font-size: 14px;
 }
 
 .ui.card {

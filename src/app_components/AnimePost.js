@@ -18,6 +18,7 @@ const AnimePost = ({ anime, userID, duration }) => {
 	}, []);
 
 	const onAnimeSelected = () => {
+		console.log(userID);
 		fetch(`${API_URL}getanime?anime=${anime.mal_id}&userID=${userID}`, {
 			method: "get",
 			headers: {

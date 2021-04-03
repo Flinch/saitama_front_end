@@ -1,4 +1,5 @@
-import React from "react";
+import React, { useState, useEffect, Component, createRef } from "react";
+import _ from "lodash";
 import ReactDOM from "react-dom";
 import axios from "axios";
 import "./App.css";
@@ -13,6 +14,7 @@ import {
 	Segment,
 	Sidebar,
 	Sticky,
+	Ref,
 } from "semantic-ui-react";
 import {
 	BrowserRouter as Router,
@@ -23,10 +25,11 @@ import {
 } from "react-router-dom";
 
 class App extends React.Component {
+	contextRef = createRef();
 	state = {
 		animes: [],
-		isloggedin: 0,
-		userID: 0,
+		isloggedin: 1,
+		userID: 1,
 		username: "",
 		activeItem: "home",
 	};
@@ -57,99 +60,65 @@ class App extends React.Component {
 	render() {
 		if (this.state.isloggedin) {
 			return (
-				<Router>
-					<div>
-						<Sidebar.Pushable as={Segment}>
-							<Sidebar
-								as={Menu}
-								animation="overlay"
-								icon="labeled"
-								inverted
-								vertical
-								visible
-								width="thin"
-							>
-								<Menu.Item as="a">
-									<Icon name="napster" size="large" />
-
-									{this.Capitalize(this.state.username)}
-								</Menu.Item>
-								<Menu.Item
-									as="a"
-									className="logout-button"
-									onClick={this.logUserOut}
-								>
-									{" "}
-									<Icon name="paper plane" />
-									Logout
-								</Menu.Item>
-							</Sidebar>
-							<Sidebar.Pusher>
-								<Redirect to="/home" />
-								<Segment
-									basic
-									style={{
-										overflow: "auto",
-										height: "100vh",
-									}}
-								>
-									<div className="sticky ui two item menu">
-										<Menu.Item
-											as={Link}
-											to="/home"
-											name="home"
-											active={
-												this.state.activeItem === "home"
-											}
-											onClick={this.handleItemClick}
-										>
-											Home
-										</Menu.Item>
-
-										<Menu.Item
-											as={Link}
-											to="/collections"
-											name="collections"
-											active={
-												this.state.activeItem ===
-												"collections"
-											}
-											onClick={this.handleItemClick}
-										>
-											Collections
-										</Menu.Item>
-										{/*<Menu.Item
-											as={Link}
-											to=""
-											name="feeling_lucky"
-											active={
-												this.state.activeItem ===
-												"feeling_lucky"
-											}
-											onClick={this.handleItemClick}
-										>
-											Feeling Lucky
-										</Menu.Item>*/}
-									</div>
-
-									<Switch>
-										<Route exact path="/home">
-											<Home userID={this.state.userID} />
-										</Route>
-										<Route path="/collections">
-											<Collections
-												userID={this.state.userID}
-											/>
-										</Route>
-										{/*<Route path="/about">
-											<Home />
-										</Route>*/}
-									</Switch>
-								</Segment>
-							</Sidebar.Pusher>
-						</Sidebar.Pushable>
+				<div>
+					<div className="ui visible labeled icon inverted vertical menu sidebar">
+						<a class="item">
+							<i class="napster icon"></i>
+							Malik
+						</a>
+						<a class="item logout-button" onClick={this.logUserOut}>
+							<i class="paper plane layout icon"></i>
+							Logout
+						</a>
 					</div>
-				</Router>
+					<div className="pusher">
+						<Router>
+							<Redirect to="/home" />
+							<Segment basic>
+								<div className="sticky ui two item menu">
+									<Menu.Item
+										as={Link}
+										to="/home"
+										name="home"
+										active={
+											this.state.activeItem === "home"
+										}
+										onClick={this.handleItemClick}
+									>
+										Home
+									</Menu.Item>
+
+									<Menu.Item
+										as={Link}
+										to="/collections"
+										name="collections"
+										active={
+											this.state.activeItem ===
+											"collections"
+										}
+										onClick={this.handleItemClick}
+									>
+										Collections
+									</Menu.Item>
+								</div>
+
+								<Switch>
+									<Route exact path="/home">
+										<Home userID={this.state.userID} />
+									</Route>
+									<Route path="/collections">
+										<Collections
+											userID={this.state.userID}
+										/>
+									</Route>
+									<Route path="/about">
+										<Home />
+									</Route>
+								</Switch>
+							</Segment>
+						</Router>
+					</div>
+				</div>
 			);
 		} else {
 			return (

@@ -64,7 +64,7 @@ class Home extends React.Component {
 			);
 		} else {
 			return (
-				<div style={{ height: "100vh", overflow: "hidden" }}>
+				<div>
 					<div className={this.state.firstLogin}>
 						<div data-aos="fade-up">
 							{this.state.firstLogin === "firstLogin" ? (

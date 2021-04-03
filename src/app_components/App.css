@@ -23,13 +23,12 @@
 }
 
 .ui.basic.segment {
-	margin: 30px 0 0 150px !important;
+	margin: 30px 0 0 120px !important;
 }
 
 .logout-button {
 	position: absolute !important;
-	bottom: 25px;
-	margin-left: 10px;
+	bottom: 0px;
 }
 
 .ui.item.menu,
@@ -75,11 +74,6 @@
 	width: 70%;
 }
 
-.ui.thin.left.sidebar,
-.ui.thin.right.sidebar {
-	width: 110px;
-}
-
 .ui.menu .active.item {
 	background-color: #1b1c1d;
 	color: white;
@@ -110,11 +104,6 @@
 
 .max-height {
 	max-height: 310px;
-}
-
-.ui.card [class*="center aligned"],
-.ui.cards > .card [class*="center aligned"] {
-	margin-top: 60px;
 }
 
 .gold {

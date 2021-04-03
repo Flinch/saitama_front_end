@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from "react";
+import "./AnimeListings.css";
 
 const AnimePostCollections = ({ anime }) => {
 	return (
@@ -8,7 +9,10 @@ const AnimePostCollections = ({ anime }) => {
 					<p className="ui center aligned header">{anime.title}</p>
 				</div>
 				<div className="ui slide masked reveal image">
-					<img src={anime.image} className="visible content" />
+					<img
+						src={anime.image}
+						className="visible content max-height"
+					/>
 					<div className="hidden content slide">
 						{" "}
 						<p> {anime.description} </p>{" "}
