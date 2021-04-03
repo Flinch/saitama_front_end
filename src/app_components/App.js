@@ -28,8 +28,8 @@ class App extends React.Component {
 	contextRef = createRef();
 	state = {
 		animes: [],
-		isloggedin: 1,
-		userID: 1,
+		isloggedin: 0,
+		userID: 0,
 		username: "",
 		activeItem: "home",
 	};
@@ -64,7 +64,7 @@ class App extends React.Component {
 					<div className="ui visible labeled icon inverted vertical menu sidebar">
 						<a class="item">
 							<i class="napster icon"></i>
-							Malik
+							{this.Capitalize(this.state.username)}
 						</a>
 						<a class="item logout-button" onClick={this.logUserOut}>
 							<i class="paper plane layout icon"></i>
