@@ -5,17 +5,15 @@ const LoginForm = ({ OnLoginSubmit }) => {
 	const [username, setUsername] = useState("");
 	const [password, setPassword] = useState("");
 	const [incorrectCreds, setIncorrectCreds] = useState(0);
+	const API_URL = "https://saitama-back.herokuapp.com/";
 
 	const VerifyLogin = useCallback(() => {
-		fetch(
-			`http://localhost:3000/getuser?user=${username}&password=${password}`,
-			{
-				method: "get",
-				headers: {
-					"Content-Type": "application/json",
-				},
-			}
-		)
+		fetch(`${API_URL}getuser?user=${username}&password=${password}`, {
+			method: "get",
+			headers: {
+				"Content-Type": "application/json",
+			},
+		})
 			.then((response) => response.json())
 			.then((data) => {
 				OnLoginSubmit(data.isUser, data.userID, data.username);

@@ -11,20 +11,19 @@ const AnimePost = ({ anime, userID, duration }) => {
 		statusColor: "",
 	});
 
+	const API_URL = "https://saitama-back.herokuapp.com/";
+
 	useEffect(() => {
 		AOS.init({});
 	}, []);
 
 	const onAnimeSelected = () => {
-		fetch(
-			`http://localhost:3000/getanime?anime=${anime.mal_id}&userID=${userID}`,
-			{
-				method: "get",
-				headers: {
-					"Content-Type": "application/json",
-				},
-			}
-		)
+		fetch(`${API_URL}getanime?anime=${anime.mal_id}&userID=${userID}`, {
+			method: "get",
+			headers: {
+				"Content-Type": "application/json",
+			},
+		})
 			.then((response) => response.json())
 			.then((data) => {
 				if (data.notice.toString() === "Mal has already been taken") {

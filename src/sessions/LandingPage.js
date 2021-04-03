@@ -20,7 +20,7 @@ class LandingPage extends React.Component {
 	};
 
 	userClickGuest = () => {
-		this.props.OnLoginSubmit(1, 6, "guest");
+		this.props.OnLoginSubmit(1, 2, "guest");
 	};
 
 	on;

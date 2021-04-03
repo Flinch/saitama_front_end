@@ -10,7 +10,8 @@ class Collections extends React.Component {
 	}
 
 	componentDidMount = () => {
-		fetch(`http://localhost:3000/getUserAnime?userID=${this.props.userID}`)
+		const API_URL = "https://saitama-back.herokuapp.com/";
+		fetch(`${API_URL}/getUserAnime?userID=${this.props.userID}`)
 			.then((response) => response.json())
 			.then((data) => {
 				if (data.length == 0) {

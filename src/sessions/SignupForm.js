@@ -7,10 +7,11 @@ const SignupForm = ({ OnLoginSubmit }) => {
 	const [password, setPassword] = useState("");
 	const [errorMsg, setErrorMsg] = useState([""]);
 	const [invalidCreds, setInvalidCreds] = useState(0);
+	const API_URL = "https://saitama-back.herokuapp.com/";
 
 	const VerifySignup = () => {
 		fetch(
-			`http://localhost:3000/userSignup?username=${username}&password=${password}&email=${email}`,
+			`${API_URL}userSignup?username=${username}&password=${password}&email=${email}`,
 			{
 				method: "get",
 				headers: {
