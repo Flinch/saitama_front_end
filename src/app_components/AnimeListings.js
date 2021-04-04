@@ -23,7 +23,7 @@ const AnimeListings = ({ anime_data, userID, username }) => {
 				data-aos="fade-up"
 			>
 				{" "}
-				Umm ... Which One?{" "}
+				Umm ... which one?{" "}
 			</h1>
 			<div className="ui five column grid">{Listings}</div>
 		</div>

@@ -46,7 +46,7 @@ class App extends React.Component {
 	}
 
 	logUserOut = () => {
-		this.setState({ isloggedin: 0, userID: 0 });
+		this.setState({ isloggedin: 0, userID: 0, activeItem: "home" });
 	};
 
 	OnLoginSubmit = (isLoggedin, userID, username) => {
@@ -75,31 +75,36 @@ class App extends React.Component {
 						<Router>
 							<Redirect to="/home" />
 							<Segment basic>
-								<div className="sticky ui two item menu">
-									<Menu.Item
-										as={Link}
-										to="/home"
-										name="home"
-										active={
-											this.state.activeItem === "home"
-										}
-										onClick={this.handleItemClick}
-									>
-										Home
-									</Menu.Item>
+								<div className="ui Segment">
+									<div className="ui sticky">
+										<div className=" ui two item menu">
+											<Menu.Item
+												as={Link}
+												to="/home"
+												name="home"
+												active={
+													this.state.activeItem ===
+													"home"
+												}
+												onClick={this.handleItemClick}
+											>
+												Home
+											</Menu.Item>
 
-									<Menu.Item
-										as={Link}
-										to="/collections"
-										name="collections"
-										active={
-											this.state.activeItem ===
-											"collections"
-										}
-										onClick={this.handleItemClick}
-									>
-										Collections
-									</Menu.Item>
+											<Menu.Item
+												as={Link}
+												to="/collections"
+												name="collections"
+												active={
+													this.state.activeItem ===
+													"collections"
+												}
+												onClick={this.handleItemClick}
+											>
+												Collections
+											</Menu.Item>
+										</div>
+									</div>
 								</div>
 
 								<Switch>

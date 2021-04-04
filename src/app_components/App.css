@@ -110,6 +110,18 @@
 	color: #fece2f;
 }
 
+.body {
+	background: whitesmoke;
+}
+
+.hide {
+	display: none;
+}
+
+.mt {
+	margin-top: 10px !important;
+}
+
 /*-- Hover classes*/
 /* Bob */
 @-webkit-keyframes hvr-bob {

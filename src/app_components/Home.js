@@ -35,6 +35,7 @@ class Home extends React.Component {
 	OnInputSubmit = async (term) => {
 		this.setState({ firstLogin: 0 });
 		this.setState({ animes: [] });
+		this.setState({ isLoading: 1 });
 
 		axios
 			.get(`https://api.jikan.moe/v3/search/anime?q=${term}&limit=5`)
@@ -47,6 +48,7 @@ class Home extends React.Component {
 			.catch((error) => {
 				if (error.response) {
 					this.setState({ getError: 1 });
+					this.setState({ isLoading: 0 });
 				}
 			});
 	};
@@ -56,46 +58,41 @@ class Home extends React.Component {
 	};
 
 	render() {
-		if (this.state.isLoading) {
-			return (
-				<div>
-					<Loading />;
-				</div>
-			);
-		} else {
-			return (
-				<div>
-					<div className={this.state.firstLogin}>
-						<div data-aos="fade-up">
-							{this.state.firstLogin === "firstLogin" ? (
-								<img
-									className="saitama-img hvr-bob"
-									src={saitama}
-								/>
-							) : (
-								""
-							)}
-						</div>
-						<SearchBar
-							OnInputSubmit={this.OnInputSubmit}
-							msg="Add to your favorite animes"
-						/>
-						{this.state.getError ? (
-							<div className="error-bar">
-								<ErrorBar msg="Oops, we couldn't find that. Try another search" />
-							</div>
+		return (
+			<div>
+				<div className={this.state.firstLogin}>
+					<div data-aos="fade-up">
+						{this.state.firstLogin === "firstLogin" ? (
+							<img
+								className="saitama-img hvr-bob"
+								src={saitama}
+							/>
 						) : (
 							""
 						)}
 					</div>
-
+					<SearchBar
+						OnInputSubmit={this.OnInputSubmit}
+						msg="Add to your favorite animes"
+					/>
+					{this.state.getError ? (
+						<div className="error-bar">
+							<ErrorBar msg="Oops, we couldn't find that. Try another search" />
+						</div>
+					) : (
+						""
+					)}
+				</div>
+				{this.state.isLoading ? (
+					<Loading />
+				) : (
 					<AnimeListings
 						anime_data={this.state.animes}
 						userID={this.state.userID}
 					/>
-				</div>
-			);
-		}
+				)}
+			</div>
+		);
 	}
 }
 

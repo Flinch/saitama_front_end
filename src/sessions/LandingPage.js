@@ -5,7 +5,7 @@ import "../app_components/App.css";
 import saitama from "../img/saitama.svg";
 
 class LandingPage extends React.Component {
-	state = { login: 0 };
+	state = { login: 0, isLoading: 0 };
 
 	constructor(props) {
 		super(props);
@@ -20,6 +20,7 @@ class LandingPage extends React.Component {
 	};
 
 	userClickGuest = () => {
+		this.setState({ isLoading: 1 });
 		this.props.OnLoginSubmit(1, 2, "guest");
 	};
 
@@ -53,8 +54,14 @@ class LandingPage extends React.Component {
 				) : (
 					<SignupForm OnLoginSubmit={this.props.OnLoginSubmit} />
 				)}
-				<div className="guest">
-					<p>
+				<div
+					className={
+						this.state.isLoading
+							? "ui active inline loader centered mt"
+							: "guest"
+					}
+				>
+					<p className={this.state.isLoading ? "hide" : ""}>
 						{" "}
 						Too shy? Try{" "}
 						<a
@@ -64,7 +71,7 @@ class LandingPage extends React.Component {
 							{" "}
 							Guest{" "}
 						</a>{" "}
-						Login instead{" "}
+						login instead{" "}
 					</p>
 				</div>
 			</div>

@@ -7,9 +7,11 @@ const SignupForm = ({ OnLoginSubmit }) => {
 	const [password, setPassword] = useState("");
 	const [errorMsg, setErrorMsg] = useState([""]);
 	const [invalidCreds, setInvalidCreds] = useState(0);
+	const [loginLoad, setLoginLoader] = useState(1);
 	const API_URL = "https://saitama-back.herokuapp.com/";
 
 	const VerifySignup = () => {
+		setLoginLoader(0);
 		fetch(
 			`${API_URL}userSignup?username=${username}&password=${password}&email=${email}`,
 			{
@@ -26,6 +28,7 @@ const SignupForm = ({ OnLoginSubmit }) => {
 				} else {
 					setErrorMsg(data.message);
 					setInvalidCreds(1);
+					setLoginLoader(1);
 				}
 			});
 	};
@@ -68,15 +71,19 @@ const SignupForm = ({ OnLoginSubmit }) => {
 						/>
 					</div>
 					<div className="center">
-						<button
-							className="ui button"
-							type="button"
-							onClick={() => {
-								VerifySignup();
-							}}
-						>
-							Signup
-						</button>
+						{loginLoad ? (
+							<button
+								className="ui button"
+								type="button"
+								onClick={() => {
+									VerifySignup();
+								}}
+							>
+								Sign up
+							</button>
+						) : (
+							<div class="ui active inline loader"></div>
+						)}
 					</div>
 					{invalidCreds ? (
 						<ErrorBar msg={errorMsg.toString("")} />
