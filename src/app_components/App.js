@@ -6,6 +6,7 @@ import "./App.css";
 import Home from "./Home";
 import Collections from "./Collections";
 import LandingPage from "../sessions/LandingPage";
+import ls from "local-storage";
 import {
 	Header,
 	Icon,
@@ -39,6 +40,14 @@ class App extends React.Component {
 		this.contextRef = React.createRef();
 	}
 
+	componentDidMount() {
+		this.setState({
+			isloggedin: ls.get("loginToken"),
+			userID: ls.get("userID"),
+			username: ls.get("username"),
+		});
+	}
+
 	handleItemClick = (e, { name }) => this.setState({ activeItem: name });
 
 	Capitalize(str) {
@@ -46,6 +55,8 @@ class App extends React.Component {
 	}
 
 	logUserOut = () => {
+		ls.set("loginToken", 0);
+		ls.set("userID", 0);
 		this.setState({ isloggedin: 0, userID: 0, activeItem: "home" });
 	};
 
@@ -55,24 +66,36 @@ class App extends React.Component {
 			userID: userID,
 			username: username,
 		});
+
+		ls.set("loginToken", isLoggedin);
+		ls.set("userID", userID);
+		ls.set("username", username);
 	};
 
 	render() {
 		if (this.state.isloggedin) {
 			return (
 				<div>
-					<div className="ui visible labeled icon inverted vertical menu sidebar">
-						<a class="item">
-							<i class="napster icon"></i>
-							{this.Capitalize(this.state.username)}
-						</a>
-						<a class="item logout-button" onClick={this.logUserOut}>
-							<i class="paper plane layout icon"></i>
-							Logout
-						</a>
-					</div>
-					<div className="pusher">
-						<Router>
+					<Router>
+						<div className="ui visible labeled icon inverted vertical menu sidebar">
+							<a class="item">
+								<i
+									class="napster icon"
+									style={{ cursor: "default" }}
+								></i>
+								<Link to="/home">
+									{this.Capitalize(this.state.username)}
+								</Link>
+							</a>
+							<a
+								class="item logout-button"
+								onClick={this.logUserOut}
+							>
+								<i class="paper plane layout icon"></i>
+								Logout
+							</a>
+						</div>
+						<div className="pusher">
 							<Redirect to="/home" />
 							<Segment basic>
 								<div className="ui Segment">
@@ -121,8 +144,8 @@ class App extends React.Component {
 									</Route>
 								</Switch>
 							</Segment>
-						</Router>
-					</div>
+						</div>
+					</Router>
 				</div>
 			);
 		} else {

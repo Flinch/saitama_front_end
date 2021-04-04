@@ -20,8 +20,8 @@ class Collections extends React.Component {
 					this.setState({ emptyCollections: 1 });
 				}
 				this.setState({ anime: data });
+				this.setState({ isLoading: 0 });
 			});
-		this.setState({ isLoading: 0 });
 	};
 
 	render() {

@@ -1,5 +1,6 @@
 .landing-page-content {
 	text-align: center;
+	font-family: "Quicksand";
 }
 
 .login-form {
@@ -29,6 +30,7 @@
 .logout-button {
 	position: absolute !important;
 	bottom: 0px;
+	left: 10px;
 }
 
 .ui.item.menu,
@@ -40,7 +42,6 @@
 .item:active {
 	color: red;
 	box-shadow: 0 0 0 white;
-	margin: 6px 10px 2px 10px;
 }
 
 .ui.grid {
@@ -120,6 +121,14 @@
 
 .mt {
 	margin-top: 10px !important;
+}
+
+.ui.vertical.icon.menu {
+	width: 110px;
+}
+
+.ui.inverted.menu .link.item:active,
+.ui.inverted.menu a.item:active {
 }
 
 /*-- Hover classes*/

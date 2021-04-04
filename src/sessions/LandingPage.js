@@ -20,7 +20,6 @@ class LandingPage extends React.Component {
 	};
 
 	userClickGuest = () => {
-		this.setState({ isLoading: 1 });
 		this.props.OnLoginSubmit(1, 2, "guest");
 	};
 
