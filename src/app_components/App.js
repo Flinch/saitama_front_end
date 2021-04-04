@@ -78,15 +78,17 @@ class App extends React.Component {
 				<div>
 					<Router>
 						<div className="ui visible labeled icon inverted vertical menu sidebar">
-							<a class="item">
-								<i
-									class="napster icon"
-									style={{ cursor: "default" }}
-								></i>
-								<Link to="/home">
-									{this.Capitalize(this.state.username)}
-								</Link>
-							</a>
+							<Menu.Item
+								as={Link}
+								to="/home"
+								name="home"
+								onClick={this.handleItemClick}
+							>
+								<i class="napster icon"></i>
+
+								{this.Capitalize(this.state.username)}
+							</Menu.Item>
+
 							<a
 								class="item logout-button"
 								onClick={this.logUserOut}
