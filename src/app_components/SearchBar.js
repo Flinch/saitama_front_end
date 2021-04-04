@@ -9,8 +9,10 @@ class SearchBar extends React.Component {
 
 	OnTermChange = (event) => {
 		this.setState({ term: event.target.value });
-		if (this.state.term.length > 2) {
+		{
+			/*if (this.state.term.length > 2) {
 			this.props.OnInputSubmit(this.state.term);
+		}*/
 		}
 	};
 
