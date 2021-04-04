@@ -4,7 +4,7 @@ const Loading = (props) => {
 	return (
 		<div
 			className="ui active centered inline loader"
-			style={{ marginTop: "300px" }}
+			style={{ marginTop: "225px" }}
 		>
 			<div className="ui text loader">{props.message}</div>
 		</div>
