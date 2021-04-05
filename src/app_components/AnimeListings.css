@@ -31,3 +31,7 @@
 .ui.card {
 	font-family: "Quicksand", sans-serif !important;
 }
+
+.red:hover {
+	color: red;
+}
