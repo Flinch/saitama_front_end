@@ -169,6 +169,16 @@
 	.firstLogin {
 		margin-top: 100px !important;
 	}
+
+	.ui.labeled.icon.menu .item {
+		min-width: 0px;
+		width: 50px;
+		font-size: 10px;
+	}
+
+	.ui.labeled.icon.menu .item > .icon:not(.dropdown) {
+		font-size: 1.5rem !important;
+	}
 }
 /*-- Hover classes*/
 /* Bob */
