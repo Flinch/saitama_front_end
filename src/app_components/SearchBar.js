@@ -1,4 +1,5 @@
 import React from "react";
+import "./App.css";
 
 class SearchBar extends React.Component {
 	state = { term: "" };
@@ -33,6 +34,15 @@ class SearchBar extends React.Component {
 							value={this.state.term}
 							onChange={this.OnTermChange}
 						/>
+						<div className="go-button-container">
+							<button
+								className="ui button go-button"
+								onClick={this.onSubmit}
+							>
+								{" "}
+								Go!{" "}
+							</button>
+						</div>
 					</div>
 				</form>
 			</div>

@@ -24,7 +24,7 @@
 }
 
 .ui.basic.segment {
-	margin: 30px 0 0 120px !important;
+	margin: 30px 15px 0 100px !important;
 }
 
 .logout-button {
@@ -67,7 +67,7 @@
 
 .error-bar {
 	margin: 10px auto auto auto;
-	width: 500px;
+	width: auto;
 }
 
 .ui.labeled.icon.menu .item > .icon:not(.dropdown) {
@@ -120,6 +120,10 @@
 	background: whitesmoke;
 }
 
+.go-button-container {
+	display: none;
+}
+
 .hide {
 	display: none;
 }
@@ -166,12 +170,27 @@
 		display: flex;
 	}
 
+	.go-button {
+		background-color: #1b1c1d !important;
+		color: white !important;
+	}
+
+	.go-button-container {
+		display: block;
+		text-align: center;
+		padding-top: 10px;
+	}
+
 	.field label {
 		font-size: 12px !important;
 	}
 
 	.ui.container.form {
 		margin: 0px !important;
+	}
+
+	.two-item {
+		min-width: 300px;
 	}
 
 	.firstLogin {

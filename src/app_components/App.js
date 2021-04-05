@@ -101,35 +101,32 @@ class App extends React.Component {
 						<div className="pusher">
 							<Redirect to="/home" />
 							<Segment basic>
-								<div className="ui Segment">
-									<div className="ui sticky">
-										<div className=" ui two item menu">
-											<Menu.Item
-												as={Link}
-												to="/home"
-												name="home"
-												active={
-													this.state.activeItem ===
-													"home"
-												}
-												onClick={this.handleItemClick}
-											>
-												Home
-											</Menu.Item>
+								<div className="ui Segment two-item">
+									<div className=" ui two item menu">
+										<Menu.Item
+											as={Link}
+											to="/home"
+											name="home"
+											active={
+												this.state.activeItem === "home"
+											}
+											onClick={this.handleItemClick}
+										>
+											Home
+										</Menu.Item>
 
-											<Menu.Item
-												as={Link}
-												to="/collections"
-												name="collections"
-												active={
-													this.state.activeItem ===
-													"collections"
-												}
-												onClick={this.handleItemClick}
-											>
-												Collections
-											</Menu.Item>
-										</div>
+										<Menu.Item
+											as={Link}
+											to="/collections"
+											name="collections"
+											active={
+												this.state.activeItem ===
+												"collections"
+											}
+											onClick={this.handleItemClick}
+										>
+											Collections
+										</Menu.Item>
 									</div>
 								</div>
 
