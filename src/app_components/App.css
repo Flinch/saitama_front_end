@@ -30,7 +30,6 @@
 .logout-button {
 	position: absolute !important;
 	bottom: 0px;
-	left: 10px;
 }
 
 .ui.item.menu,
@@ -123,14 +122,54 @@
 	margin-top: 10px !important;
 }
 
-.ui.vertical.icon.menu {
+ {
+	/*.ui.vertical.icon.menu {
 	width: 110px;
+}*/
 }
 
 .ui.inverted.menu .link.item:active,
 .ui.inverted.menu a.item:active {
 }
 
+@media only screen and (max-width: 700px) {
+	.ui[class*="five column"].grid > .column:not(.row),
+	.ui[class*="five column"].grid > .row > .column {
+		width: 100%;
+	}
+
+	.ui.basic.segment {
+		margin: 30px 10px 0 85px !important;
+	}
+
+	.container-editBox {
+		position: absolute;
+		top: 66px !important;
+		right: 70px !important;
+	}
+
+	.showHeading {
+		margin: 30px 0px 0px 0px !important;
+	}
+
+	.saitama-img {
+		width: 100%;
+		margin: auto;
+		display: flex;
+	}
+
+	.field label {
+		font-size: 12px !important;
+	}
+
+	.ui.container.form {
+		margin: 0px !important;
+	}
+
+	.firstLogin {
+		margin-top: 100px !important;
+	}
+}
 /*-- Hover classes*/
 /* Bob */
 @-webkit-keyframes hvr-bob {

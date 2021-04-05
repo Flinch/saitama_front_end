@@ -5,6 +5,12 @@
 .content {
 }
 
+.container-editBox {
+	position: absolute;
+	top: 60px;
+	right: 30px;
+}
+
 .slide {
 	text-align: center;
 	padding: 10px;

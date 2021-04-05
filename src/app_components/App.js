@@ -79,6 +79,7 @@ class App extends React.Component {
 					<Router>
 						<div className="ui visible labeled icon inverted vertical menu sidebar">
 							<Menu.Item
+								style={{ paddingTop: "20px" }}
 								as={Link}
 								to="/home"
 								name="home"

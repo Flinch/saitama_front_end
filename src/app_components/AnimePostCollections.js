@@ -1,9 +1,15 @@
 import React, { useState, useEffect } from "react";
 import "./AnimeListings.css";
+import "./App.css";
 
-const AnimePostCollections = ({ anime, userID, triggerRefresh }) => {
+const AnimePostCollections = ({ anime, userID, triggerRefresh, editClick }) => {
 	const [status, setStatus] = useState("");
-	const [showDelete, setShowDelete] = useState(1);
+	const [showDelete, setShowDelete] = useState(0);
+
+	useEffect(() => {
+		setShowDelete(editClick);
+	}, [editClick]);
+
 	const onDeleteAnime = () => {
 		const API_URL = "https://saitama-back.herokuapp.com/";
 		fetch(`${API_URL}/removeAnime?animeID=${anime.id}&userID=${userID}`, {
@@ -21,10 +27,6 @@ const AnimePostCollections = ({ anime, userID, triggerRefresh }) => {
 					setStatus("Something Went Wrong. Try again");
 				}
 			});
-	};
-
-	const onEditClick = () => {
-		setShowDelete(!showDelete);
 	};
 
 	return (
