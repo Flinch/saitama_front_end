@@ -8,7 +8,8 @@ class Collections extends React.Component {
 		anime: [],
 		emptyCollections: 0,
 		isLoading: 0,
-		triggerRefresh: true,
+		triggerRefresh: false,
+		prevTriggerRefresh: false,
 	};
 
 	constructor(props) {
@@ -30,21 +31,31 @@ class Collections extends React.Component {
 	};
 
 	componentDidUpdate = () => {
-		const API_URL = "https://saitama-back.herokuapp.com/";
-		fetch(`${API_URL}/getUserAnime?userID=${this.props.userID}`)
-			.then((response) => response.json())
-			.then((data) => {
-				if (data.length == 0) {
-					this.setState({ emptyCollections: 1 });
-				}
-				this.setState({ anime: data });
-			});
+		if (this.state.triggerRefresh != this.state.prevTriggerRefresh) {
+			const API_URL = "https://saitama-back.herokuapp.com/";
+			fetch(`${API_URL}/getUserAnime?userID=${this.props.userID}`)
+				.then((response) => response.json())
+				.then((data) => {
+					if (data.length == 0) {
+						this.setState({ emptyCollections: 1 });
+					}
+					this.setState({ anime: data });
+					this.setState({ triggerRefresh: false });
+				});
+		}
 	};
 
 	triggerRefresh = () => {
 		console.log("I got triggered!");
-		this.setState({ triggerRefresh: !this.state.triggerRefresh });
+		this.setState((prevState) => {
+			return {
+				triggerRefresh: !this.state.triggerRefresh,
+				prevTriggerRefresh: prevState.triggerRefresh,
+			};
+		});
+
 		console.log(this.state.triggerRefresh);
+		console.log(this.state.prevTriggerRefresh);
 	};
 
 	render() {
