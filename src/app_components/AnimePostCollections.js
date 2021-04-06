@@ -42,7 +42,7 @@ const AnimePostCollections = ({ anime, userID, triggerRefresh, editClick }) => {
 					/>
 					<div className="hidden content slide">
 						{" "}
-						<p> {anime.description} </p>{" "}
+						<p className="text-black"> {anime.description} </p>{" "}
 					</div>
 				</div>
 				{showDelete ? (

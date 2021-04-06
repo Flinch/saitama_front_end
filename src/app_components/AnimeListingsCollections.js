@@ -16,10 +16,6 @@ const AnimeListingsCollections = ({ anime_data, userID, triggerRefresh }) => {
 		);
 	});
 
-	useEffect(() => {
-		console.log("re-render!");
-	}, [editClick]);
-
 	const onEditClick = () => {
 		setEditClick(!editClick);
 	};
@@ -35,7 +31,9 @@ const AnimeListingsCollections = ({ anime_data, userID, triggerRefresh }) => {
 							onEditClick();
 						}}
 					/>
-					<label>Edit Mode</label>
+					<label>
+						<p style={{ color: "orange" }}>Edit Mode</p>
+					</label>
 				</div>
 			</div>
 			<div className="ui five column grid">{Listings}</div>

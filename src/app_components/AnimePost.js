@@ -62,7 +62,10 @@ const AnimePost = ({ anime, userID, duration }) => {
 						style={{ overflow: "auto" }}
 					>
 						{" "}
-						<p class="ui center aligned"> {anime.synopsis} </p>{" "}
+						<p class="ui center aligned text-black">
+							{" "}
+							{anime.synopsis}{" "}
+						</p>{" "}
 					</div>
 				</div>
 				<div

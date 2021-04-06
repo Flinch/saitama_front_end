@@ -7,6 +7,7 @@ import Home from "./Home";
 import Collections from "./Collections";
 import LandingPage from "../sessions/LandingPage";
 import ls from "local-storage";
+import DarkMode from "./DarkMode.js";
 import {
 	Header,
 	Icon,
@@ -72,10 +73,15 @@ class App extends React.Component {
 		ls.set("username", username);
 	};
 
+	onSelectTheme = (theme) => {
+		console.log(theme);
+	};
+
 	render() {
 		if (this.state.isloggedin) {
 			return (
 				<div>
+					<DarkMode onSelectTheme={this.onSelectTheme} />
 					<Router>
 						<div className="ui visible labeled icon inverted vertical menu sidebar">
 							<Menu.Item
@@ -86,7 +92,6 @@ class App extends React.Component {
 								onClick={this.handleItemClick}
 							>
 								<i class="napster icon"></i>
-
 								{this.Capitalize(this.state.username)}
 							</Menu.Item>
 
@@ -104,6 +109,7 @@ class App extends React.Component {
 								<div className="ui Segment two-item">
 									<div className=" ui two item menu">
 										<Menu.Item
+											id="menu1"
 											as={Link}
 											to="/home"
 											name="home"
@@ -116,6 +122,7 @@ class App extends React.Component {
 										</Menu.Item>
 
 										<Menu.Item
+											id="menu2"
 											as={Link}
 											to="/collections"
 											name="collections"

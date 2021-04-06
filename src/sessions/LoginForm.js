@@ -1,5 +1,6 @@
 import React, { useState, useCallback } from "react";
 import ErrorBar from "../ErrorBar";
+import "../app_components/App.css";
 
 const LoginForm = ({ OnLoginSubmit }) => {
 	const [username, setUsername] = useState("");
@@ -29,7 +30,7 @@ const LoginForm = ({ OnLoginSubmit }) => {
 			<div className="content" style={{ backgroundColor: "white" }}>
 				<form className="container ui form">
 					<div className="field">
-						<label>Username</label>
+						<label className="text-black">Username</label>
 						<input
 							type="text"
 							name="first-name"
@@ -40,7 +41,7 @@ const LoginForm = ({ OnLoginSubmit }) => {
 						/>
 					</div>
 					<div className="field">
-						<label>Password</label>
+						<label className="text-black">Password</label>
 						<input
 							type="password"
 							name="password"

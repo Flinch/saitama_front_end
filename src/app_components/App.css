@@ -132,10 +132,8 @@
 	margin-top: 10px !important;
 }
 
- {
-	/*.ui.vertical.icon.menu {
-	width: 110px;
-}*/
+.text-black {
+	color: black !important;
 }
 
 .ui.inverted.menu .link.item:active,
@@ -282,4 +280,52 @@
 	animation-fill-mode: forwards;
 	-webkit-animation-direction: normal, alternate;
 	animation-direction: normal, alternate;
+}
+/* Dark and Light Mode classes */
+:root {
+	--black: rgb(35 35 35);
+	--white: whitesmoke;
+}
+
+body.light {
+	--background-color: var(--white);
+	--text-color: var(--black);
+	--font-weight: 400;
+}
+
+body.dark {
+	--background-color: var(--black);
+	--font-weight: 500;
+	--text-color: var(--white);
+}
+
+label#formHome {
+	color: var(--text-color) !important;
+}
+
+a#menu2.active.item {
+	background-color: var(--text-color) !important;
+	color: var(--background-color);
+}
+
+a#menu1.active.item {
+	background-color: var(--text-color) !important;
+	color: var(--background-color);
+}
+
+#menu1 {
+	background-color: var(--background-color) !important;
+	color: var(--text-color);
+}
+
+#menu2 {
+	background-color: var(--background-color) !important;
+	color: var(--text-color);
+}
+
+body {
+	background: var(--background-color);
+	color: var(--text-color);
+	font-weight: var(--font-weight);
+	transition: background 0.3s ease-in-out, color 0.6s ease-in-out;
 }

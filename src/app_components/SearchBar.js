@@ -29,7 +29,7 @@ class SearchBar extends React.Component {
 				<br />
 				<form className="ui form" onSubmit={this.OnSubmit}>
 					<div className="field">
-						<label> {this.props.msg} </label>
+						<label id="formHome"> {this.props.msg} </label>
 						<input
 							value={this.state.term}
 							onChange={this.OnTermChange}
