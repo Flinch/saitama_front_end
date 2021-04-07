@@ -17,18 +17,19 @@ const DarkMode = () => {
   if (theme === lightTheme || theme === darkTheme) {
     body.classList.add(theme);
   } else {
-    body.classList.add(lightTheme);
+    body.classList.add(darkTheme);
+    theme = darkTheme;
   }
 
   const switchTheme = (e) => {
     if (theme === darkTheme) {
       body.classList.replace(darkTheme, lightTheme);
-      e.target.classList.remove(clickedClass);
+      e.target.classList.add(clickedClass);
       localStorage.setItem("theme", "light");
       theme = lightTheme;
     } else {
       body.classList.replace(lightTheme, darkTheme);
-      e.target.classList.add(clickedClass);
+      e.target.classList.remove(clickedClass);
       localStorage.setItem("theme", "dark");
       theme = darkTheme;
     }
@@ -37,7 +38,7 @@ const DarkMode = () => {
   return (
     <div className="container-darkMode">
       <button
-        className={theme === "dark" ? clickedClass : ""}
+        className={theme === "light" ? clickedClass : ""}
         id="darkMode"
         onClick={(e) => switchTheme(e)}
       ></button>
