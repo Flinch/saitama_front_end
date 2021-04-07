@@ -2,9 +2,12 @@ import React, { useState, useEffect } from "react";
 import SuchEmpty from "./SuchEmpty";
 import AnimeListingsCollections from "./AnimeListingsCollections";
 import Loading from "../Loading";
+import SearchBarCollections from "./SearchBarCollections";
+import SearchPage from "./SearchPage";
 
 class Collections extends React.Component {
 	state = {
+		animeCollection: [],
 		anime: [],
 		emptyCollections: 0,
 		isLoading: 0,
@@ -26,6 +29,7 @@ class Collections extends React.Component {
 					this.setState({ emptyCollections: 1 });
 				}
 				this.setState({ anime: data });
+				this.setState({ animeCollection: data });
 				this.setState({ isLoading: 0 });
 			});
 	};
@@ -58,9 +62,28 @@ class Collections extends React.Component {
 		console.log(this.state.prevTriggerRefresh);
 	};
 
+	OnInputSubmit = (term) => {
+		console.log(term);
+		if (term == "") {
+			this.triggerRefresh();
+		} else {
+			let animes = this.state.animeCollection;
+			const List = animes.filter((anime) => {
+				if (anime.title.toLowerCase().includes(term)) {
+					return anime;
+				}
+			});
+
+			this.setState({ anime: List });
+		}
+	};
+
 	render() {
 		return (
 			<div>
+				<div className="container-search">
+					<SearchBarCollections OnInputSubmit={this.OnInputSubmit} />
+				</div>
 				{this.state.isLoading ? (
 					<Loading />
 				) : (

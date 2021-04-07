@@ -99,6 +99,10 @@
 	background-color: #e0e1e2;
 }
 
+.container-search {
+	text-align: end;
+}
+
 .such-empty {
 	margin: auto;
 	text-align: center;
