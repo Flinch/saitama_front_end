@@ -18,13 +18,18 @@
 	margin-top: 30px;
 }
 
+.menu-bars {
+	margin: 10px 0 0 10px !important;
+	cursor: pointer;
+}
+
 .guest {
 	text-align: center;
 	padding-top: 15px;
 }
 
 .ui.basic.segment {
-	margin: 30px 15px 0 100px !important;
+	margin: 10px 15px 0 50px !important;
 }
 
 .logout-button {
@@ -151,15 +156,14 @@
 	}
 
 	.ui.basic.segment {
-		margin: 0px !important;
-		position: absolute;
-		left: 50px;
+		margin: 20px !important;
 	}
 
 	.container-editBox {
-		position: absolute;
-		top: 66px !important;
-		right: 70px !important;
+	}
+
+	.container-search {
+		text-align: center;
 	}
 
 	.showHeading {
@@ -170,11 +174,6 @@
 		width: 100%;
 		margin: auto;
 		display: flex;
-	}
-
-	.go-button {
-		background-color: #1b1c1d !important;
-		color: white !important;
 	}
 
 	.go-button-container {

@@ -9,6 +9,9 @@ import LandingPage from "../sessions/LandingPage";
 import ls from "local-storage";
 import DarkMode from "./DarkMode.js";
 import {
+	Button,
+	Grid,
+	Checkbox,
 	Header,
 	Icon,
 	Image,
@@ -27,18 +30,17 @@ import {
 } from "react-router-dom";
 
 class App extends React.Component {
-	contextRef = createRef();
 	state = {
 		animes: [],
 		isloggedin: 0,
 		userID: 0,
 		username: "",
 		activeItem: "home",
+		visible: false,
 	};
 
 	constructor() {
 		super();
-		this.contextRef = React.createRef();
 	}
 
 	componentDidMount() {
@@ -73,17 +75,29 @@ class App extends React.Component {
 		ls.set("username", username);
 	};
 
-	onSelectTheme = (theme) => {
-		console.log(theme);
-	};
-
 	render() {
 		if (this.state.isloggedin) {
 			return (
 				<div>
 					<DarkMode onSelectTheme={this.onSelectTheme} />
 					<Router>
-						<div className="ui visible labeled icon inverted vertical menu sidebar">
+						<Icon
+							name="big bars"
+							className="menu-bars"
+							onClick={() => {
+								this.setState({ visible: true });
+							}}
+						/>
+						<Sidebar
+							as={Menu}
+							animation="overlay"
+							icon="labeled"
+							inverted
+							onHide={() => this.setState({ visible: false })}
+							vertical
+							visible={this.state.visible}
+							width="very-thin"
+						>
 							<Menu.Item
 								style={{ paddingTop: "20px" }}
 								as={Link}
@@ -102,7 +116,7 @@ class App extends React.Component {
 								<i class="paper plane layout icon"></i>
 								Logout
 							</a>
-						</div>
+						</Sidebar>
 						<div className="pusher">
 							<Redirect to="/home" />
 							<Segment basic>

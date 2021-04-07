@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from "react";
 import AnimePostCollections from "./AnimePostCollections";
+import { Icon, Popup } from "semantic-ui-react";
 import "./AnimeListings.css";
 
 const AnimeListingsCollections = ({ anime_data, userID, triggerRefresh }) => {
@@ -23,18 +24,24 @@ const AnimeListingsCollections = ({ anime_data, userID, triggerRefresh }) => {
 	return (
 		<div>
 			<div className="container-editBox">
-				<div class="ui toggle checkbox">
-					<input
-						type="checkbox"
-						name="public"
-						onClick={() => {
-							onEditClick();
-						}}
-					/>
-					<label>
-						<p style={{ color: "orange" }}>Edit Mode</p>
-					</label>
-				</div>
+				<Popup
+					content="Click to make changes"
+					trigger={
+						<i
+							onClick={() => {
+								onEditClick();
+							}}
+							className={
+								editClick
+									? "large lock open icon"
+									: "large lock icon"
+							}
+							style={{ cursor: "pointer" }}
+						>
+							{" "}
+						</i>
+					}
+				/>
 			</div>
 			<div className="ui five column grid">{Listings}</div>
 		</div>
