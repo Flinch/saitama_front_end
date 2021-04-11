@@ -44,13 +44,13 @@ class Collections extends React.Component {
 						this.setState({ emptyCollections: 1 });
 					}
 					this.setState({ anime: data });
+					this.setState({ animeCollection: data });
 					this.setState({ triggerRefresh: false });
 				});
 		}
 	};
 
 	triggerRefresh = () => {
-		console.log("I got triggered!");
 		this.setState((prevState) => {
 			return {
 				triggerRefresh: !this.state.triggerRefresh,
@@ -63,7 +63,6 @@ class Collections extends React.Component {
 	};
 
 	OnInputSubmit = (term) => {
-		console.log(term);
 		if (term == "") {
 			this.triggerRefresh();
 		} else {
