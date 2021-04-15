@@ -1,0 +1,36 @@
+.ui.grid {
+	margin: auto !important;
+}
+
+.container {
+}
+
+.stats {
+	margin-top: 40px;
+	margin-left: 20px;
+	width: 21% !important;
+}
+
+.title {
+	text-align: center;
+	width: 40% !important;
+}
+
+.synopsis {
+	margin-top: 40px;
+	margin-left: 45px;
+	overflow: auto;
+	max-height: 320px;
+}
+
+.button-container {
+	left: 45% !important;
+	position: absolute;
+	bottom: 5px;
+}
+
+.anime-view {
+	background-color: whitesmoke;
+	width: auto;
+	height: 430px;
+}

@@ -117,6 +117,18 @@
 	font-weight: 200;
 }
 
+.img-random-bar {
+	max-height: 250px;
+	width: auto !important;
+	border: 5px solid aliceblue !important;
+}
+
+.img-random-bar-selected {
+	max-height: 250px;
+	width: auto !important;
+	border: 5px solid blue !important;
+}
+
 .max-height {
 	max-height: 310px;
 }
