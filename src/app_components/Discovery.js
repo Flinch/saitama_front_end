@@ -4,6 +4,7 @@ import RandomBar from "./RandomBar";
 import LoadingBar from "../Loading.js";
 import AnimeView from "./AnimeView";
 import ls from "local-storage";
+import "./Discovery.css";
 
 const genre = [
 	1,
@@ -39,6 +40,7 @@ class Discovery extends React.Component {
 		isLoading: 0,
 		animeSelectedID: 0,
 		animeView: 0,
+		hideButton: 0,
 	};
 
 	constructor(props) {
@@ -65,7 +67,7 @@ class Discovery extends React.Component {
 	};
 
 	onInputClick = () => {
-		this.setState({ randomAnime: [], isLoading: 1 }, () => {
+		this.setState({ randomAnime: [], isLoading: 1, hideButton: 1 }, () => {
 			this.generateRandomAnime();
 		});
 	};
@@ -104,10 +106,14 @@ class Discovery extends React.Component {
 		}
 
 		this.setState({ randomAnime: anime_res }, () => {
-			this.setState({
-				isLoading: 0,
-			});
-			this.onAnimeSelected(this.state.randomAnime[0].mal_id);
+			setTimeout(() => {
+				this.setState({
+					isLoading: 0,
+					hideButton: 0,
+				});
+
+				this.onAnimeSelected(this.state.randomAnime[0].mal_id);
+			}, 2000);
 		});
 	};
 
@@ -119,20 +125,38 @@ class Discovery extends React.Component {
 				) : (
 					""
 				)}
+				<div
+					className={
+						this.state.animeView
+							? "button-container-view"
+							: "button-container"
+					}
+				>
+					<button
+						className={
+							this.state.hideButton
+								? "ui button hideButton"
+								: "ui button"
+						}
+						onClick={this.onInputClick}
+					>
+						Roll!
+					</button>
+				</div>
 				{this.state.isLoading ? (
-					<LoadingBar />
+					<div
+						className={
+							this.state.animeView ? "" : "button-container"
+						}
+					>
+						<LoadingBar />
+					</div>
 				) : (
 					<RandomBar
 						animes={this.state.randomAnime}
 						animeSelected={this.onAnimeSelected}
 					/>
 				)}
-				<button
-					onClick={this.onInputClick}
-					className="ui button button-container"
-				>
-					Roll!
-				</button>
 			</div>
 		);
 	}

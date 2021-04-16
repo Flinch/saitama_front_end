@@ -318,6 +318,11 @@ label#formHome {
 	color: var(--text-color) !important;
 }
 
+a#menu3.active.item {
+	background-color: var(--text-color) !important;
+	color: var(--background-color);
+}
+
 a#menu2.active.item {
 	background-color: var(--text-color) !important;
 	color: var(--background-color);
@@ -334,6 +339,11 @@ a#menu1.active.item {
 }
 
 #menu2 {
+	background-color: var(--background-color) !important;
+	color: var(--text-color);
+}
+
+#menu3 {
 	background-color: var(--background-color) !important;
 	color: var(--text-color);
 }

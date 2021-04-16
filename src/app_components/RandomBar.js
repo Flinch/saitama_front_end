@@ -3,11 +3,11 @@ import AnimePostDiscovery from "./AnimePostDiscovery.js";
 import "./Discovery.css";
 
 const RandomBar = ({ animes, animeSelected }) => {
-	const Listings = animes.map((anime) => {
+	const Listings = animes.map((anime, index) => {
 		return (
 			<AnimePostDiscovery
 				anime={anime}
-				key={anime.mal_id}
+				key={index}
 				animeSelected={animeSelected}
 			/>
 		);

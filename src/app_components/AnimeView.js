@@ -1,7 +1,9 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
 import "./Discovery.css";
+import AOS from "aos";
 import youtube from "../api/youtube";
+import loader from "../Loading";
 
 const AnimeView = ({ anime }) => {
 	const [animeDetail, setAnimeDetail] = useState({});
@@ -9,28 +11,31 @@ const AnimeView = ({ anime }) => {
 	const [genreArry, setgenreArry] = useState([]);
 
 	useEffect(() => {
+		AOS.init({});
+
 		try {
 			axios.get(`https://api.jikan.moe/v3/anime/${anime}`).then((res) => {
 				setAnimeDetail(res.data);
+				try {
+					const response = youtube.get("/search", {
+						params: { q: `${animeDetail.title} trailer` },
+					});
 
-				if (res.data.trailer_url != null) {
 					setTrailerURL(
-						res.data.trailer_url.replace("autoplay=1", "autoplay=0")
+						`https://www.youtube.com/embed/${response.data.items[0].id.videoId}`
 					);
-				} else {
-					try {
-						const response = youtube.get("/search", {
-							params: { q: `${animeDetail.title} trailer` },
-						});
-
+				} catch (err) {
+					if (res.data.trailer_url != null) {
 						setTrailerURL(
-							`https://www.youtube.com/embed/${response.data.items[0].id.videoId}`
+							res.data.trailer_url.replace(
+								"autoplay=1",
+								"autoplay=0"
+							)
 						);
-					} catch (err) {
+					} else {
 						setTrailerURL(
 							`https://images.drivereasy.com/wp-content/uploads/2017/10/this-video-is-not-available-1.jpg`
 						);
-						console.log(err);
 					}
 				}
 				setgenreArry([]);

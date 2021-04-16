@@ -15,7 +15,9 @@ const AnimePost = ({ anime, animeSelected }) => {
 
 	const API_URL = "https://saitama-back.herokuapp.com/";
 
-	useEffect(() => {}, []);
+	useEffect(() => {
+		setIsSelected(0);
+	}, [isSelected]);
 
 	const onAnimeSelected = () => {
 		animeSelected(anime.mal_id);
