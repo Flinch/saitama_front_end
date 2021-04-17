@@ -5,28 +5,24 @@ import "aos/dist/aos.css";
 import "./App.css";
 import TextTruncate from "react-text-truncate";
 
-const AnimePost = ({ anime, animeSelected }) => {
+const AnimePost = ({ anime, animeSelected, index, selected }) => {
 	const [status, setStatus] = useState({
 		notice: "Add to List",
 		statusColor: "",
 	});
 
-	const [isSelected, setIsSelected] = useState(0);
-
 	const API_URL = "https://saitama-back.herokuapp.com/";
 
-	useEffect(() => {
-		setIsSelected(0);
-	}, [isSelected]);
+	useEffect(() => {});
 
 	const onAnimeSelected = () => {
-		animeSelected(anime.mal_id);
+		animeSelected(anime.mal_id, index);
 	};
 
 	return (
 		<div className="column">
 			<div
-				className="ui card"
+				className="ui card m-50"
 				style={{ width: "max-content" }}
 				onClick={() => {
 					onAnimeSelected();
@@ -36,7 +32,7 @@ const AnimePost = ({ anime, animeSelected }) => {
 					<img
 						src={anime.image_url}
 						className={
-							isSelected
+							index === selected
 								? "img-random-bar-selected"
 								: "img-random-bar"
 						}

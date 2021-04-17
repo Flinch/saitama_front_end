@@ -54,40 +54,59 @@ const AnimeView = ({ anime }) => {
 	};
 
 	return (
-		<div className="row ui three column grid anime-view">
+		<div
+			className="ui three column grid anime-view"
+			style={{ fontFamily: "QuickSand" }}
+		>
 			<div className="column stats">
-				<h2>
+				<h2 className="hot-p">
 					{" "}
 					{animeDetail.score == null
 						? "No Score Yet"
 						: animeDetail.score}{" "}
 				</h2>
+
 				<p>
 					{" "}
 					Genres:
 					{genreArry.map((gen) => `  ${gen},`)}
 				</p>
 				<p> Episodes : {animeDetail.episodes} </p>
-				<p> Popularity : {animeDetail.popularity} </p>
 				<p>
 					{" "}
-					Rank: {animeDetail.rank == null
-						? "None"
-						: animeDetail.rank}{" "}
+					Popularity :{" "}
+					<span className="hot-p">{animeDetail.popularity}</span>{" "}
+				</p>
+				<p>
+					{" "}
+					Rank:{" "}
+					<span className="hot-p">
+						{animeDetail.rank == null ? "None" : animeDetail.rank}{" "}
+					</span>
 				</p>
 				<p> Status: {animeDetail.status} </p>
 				<p> Premiered: {animeDetail.premiered} </p>
 			</div>
 			<div className="column title">
-				<h2> {animeDetail.title} </h2>
+				<h2 style={{ fontFamily: "Orbitron" }}>
+					{" "}
+					{animeDetail.title} <br />{" "}
+					<span style={{ fontSize: "15px" }} className="hot-p">
+						{animeDetail.title_japanese}
+					</span>
+				</h2>
 
 				<div className="ui embed">
 					<iframe title="video player" src={trailerURL} />
 				</div>
 			</div>
-			<div className="column synopsis">
-				<h2> Synopsis </h2>
-				<p style={{ lineHeight: "2" }}> {animeDetail.synopsis} </p>
+			<div className="column" style={{ width: "36%" }}>
+				<div className=" synopsis-title">
+					<h2 style={{ fontFamily: "Orbitron" }}> Synopsis </h2>
+				</div>
+				<div className="synopsis">
+					<p style={{ lineHeight: "2" }}> {animeDetail.synopsis} </p>
+				</div>
 			</div>
 		</div>
 	);

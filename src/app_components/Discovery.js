@@ -4,6 +4,7 @@ import RandomBar from "./RandomBar";
 import LoadingBar from "../Loading.js";
 import AnimeView from "./AnimeView";
 import ls from "local-storage";
+import dice from "../img/dice.svg";
 import "./Discovery.css";
 
 const genre = [
@@ -41,6 +42,7 @@ class Discovery extends React.Component {
 		animeSelectedID: 0,
 		animeView: 0,
 		hideButton: 0,
+		selected: 0,
 	};
 
 	constructor(props) {
@@ -72,10 +74,10 @@ class Discovery extends React.Component {
 		});
 	};
 
-	onAnimeSelected = (animeID) => {
+	onAnimeSelected = (animeID, index) => {
 		this.setState(
 			{ animeSelectedID: animeID },
-			this.setState({ animeView: 1 })
+			this.setState({ animeView: 1, selected: index })
 		);
 	};
 
@@ -112,7 +114,7 @@ class Discovery extends React.Component {
 					hideButton: 0,
 				});
 
-				this.onAnimeSelected(this.state.randomAnime[0].mal_id);
+				this.onAnimeSelected(this.state.randomAnime[0].mal_id, 0);
 			}, 2000);
 		});
 	};
@@ -132,16 +134,28 @@ class Discovery extends React.Component {
 							: "button-container"
 					}
 				>
-					<button
+					<img
+						src={dice}
 						className={
 							this.state.hideButton
-								? "ui button hideButton"
-								: "ui button"
+								? "hideDice"
+								: this.state.animeView
+								? "reduced-dice"
+								: ""
 						}
 						onClick={this.onInputClick}
-					>
-						Roll!
-					</button>
+					/>
+				</div>
+				<div
+					className={
+						this.state.animeView ? "hideDice" : "discovery-title"
+					}
+				>
+					<h4>
+						{" "}
+						Click on the dice to get rolling. We'll pick out some
+						shows we think you ought to see. <br />
+					</h4>
 				</div>
 				{this.state.isLoading ? (
 					<div
@@ -155,6 +169,7 @@ class Discovery extends React.Component {
 					<RandomBar
 						animes={this.state.randomAnime}
 						animeSelected={this.onAnimeSelected}
+						selected={this.state.selected}
 					/>
 				)}
 			</div>

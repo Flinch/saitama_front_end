@@ -70,6 +70,11 @@
 	font-weight: 100;
 }
 
+.ui.menu .item:before {
+	width: 2px !important;
+	background-color: rgb(167 167 167 / 10%) !important;
+}
+
 .error-bar {
 	margin: 10px auto auto auto;
 	width: auto;
@@ -126,7 +131,7 @@
 .img-random-bar-selected {
 	max-height: 250px;
 	width: auto !important;
-	border: 5px solid blue !important;
+	border: 5px solid #ff1d8e !important;
 }
 
 .max-height {
@@ -147,6 +152,10 @@
 
 .hide {
 	display: none;
+}
+
+.m-50 {
+	margin-left: 50px !important;
 }
 
 .mt {
@@ -220,8 +229,8 @@
 		font-size: 1.5rem !important;
 	}
 }
-/*-- Hover classes*/
-/* Bob */
+/*-- Hover classes Obtained from https://ianlunn.github.io/Hover/ */
+
 @-webkit-keyframes hvr-bob {
 	0% {
 		-webkit-transform: translateY(-8px);
@@ -353,4 +362,83 @@ body {
 	color: var(--text-color);
 	font-weight: var(--font-weight);
 	transition: background 0.3s ease-in-out, color 0.6s ease-in-out;
+}
+
+/* Grid Cube (Obtained from https://tobiasahlin.com/spinkit/ ) */
+
+.sk-cube-grid {
+	width: 40px;
+	height: 40px;
+	margin: 120px auto !important;
+}
+
+.sk-cube-grid .sk-cube {
+	width: 33%;
+	height: 33%;
+	background-color: var(--text-color);
+	float: left;
+	-webkit-animation: sk-cubeGridScaleDelay 1.3s infinite ease-in-out;
+	animation: sk-cubeGridScaleDelay 1.3s infinite ease-in-out;
+}
+.sk-cube-grid .sk-cube1 {
+	-webkit-animation-delay: 0.2s;
+	animation-delay: 0.2s;
+}
+.sk-cube-grid .sk-cube2 {
+	-webkit-animation-delay: 0.3s;
+	animation-delay: 0.3s;
+}
+.sk-cube-grid .sk-cube3 {
+	-webkit-animation-delay: 0.4s;
+	animation-delay: 0.4s;
+}
+.sk-cube-grid .sk-cube4 {
+	-webkit-animation-delay: 0.1s;
+	animation-delay: 0.1s;
+}
+.sk-cube-grid .sk-cube5 {
+	-webkit-animation-delay: 0.2s;
+	animation-delay: 0.2s;
+}
+.sk-cube-grid .sk-cube6 {
+	-webkit-animation-delay: 0.3s;
+	animation-delay: 0.3s;
+}
+.sk-cube-grid .sk-cube7 {
+	-webkit-animation-delay: 0s;
+	animation-delay: 0s;
+}
+.sk-cube-grid .sk-cube8 {
+	-webkit-animation-delay: 0.1s;
+	animation-delay: 0.1s;
+}
+.sk-cube-grid .sk-cube9 {
+	-webkit-animation-delay: 0.2s;
+	animation-delay: 0.2s;
+}
+
+@-webkit-keyframes sk-cubeGridScaleDelay {
+	0%,
+	70%,
+	100% {
+		-webkit-transform: scale3D(1, 1, 1);
+		transform: scale3D(1, 1, 1);
+	}
+	35% {
+		-webkit-transform: scale3D(0, 0, 1);
+		transform: scale3D(0, 0, 1);
+	}
+}
+
+@keyframes sk-cubeGridScaleDelay {
+	0%,
+	70%,
+	100% {
+		-webkit-transform: scale3D(1, 1, 1);
+		transform: scale3D(1, 1, 1);
+	}
+	35% {
+		-webkit-transform: scale3D(0, 0, 1);
+		transform: scale3D(0, 0, 1);
+	}
 }
