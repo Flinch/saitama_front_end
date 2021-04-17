@@ -1,0 +1,98 @@
+.ui.grid {
+	margin: 10px 0 0 0px !important;
+}
+
+.container {
+}
+
+.stats {
+	margin-top: 60px;
+	margin-left: 35px;
+	width: 21% !important;
+	color: white;
+}
+
+.title {
+	text-align: center;
+	width: 40% !important;
+	color: white;
+}
+
+.synopsis {
+	margin-left: 45px;
+	overflow: auto;
+	max-height: 300px;
+	color: white !important;
+}
+
+.synopsis-title {
+	color: #ff1d8e !important;
+	margin: 40px 0px 15px 45px;
+}
+
+.button-container {
+	display: flex;
+	justify-content: center;
+	position: absolute;
+	left: 0;
+	right: 0;
+	bottom: 0;
+	top: 0;
+	align-items: center;
+	margin-top: 25%;
+	cursor: pointer;
+}
+
+.button-container-view {
+	text-align: center;
+}
+
+.discovery-title {
+	display: flex;
+	justify-content: center;
+	position: absolute;
+	left: 0;
+	right: 0;
+	bottom: 0;
+	top: 0;
+	align-items: center;
+	margin-top: 30%;
+	cursor: pointer;
+}
+
+.anime-view {
+	position: relative;
+}
+
+.hot-p {
+	color: #ff1d8e;
+}
+
+.ui.grid.random-bar {
+	margin: 10px 0px 0px 115px !important;
+}
+
+.ui.card.m-50 {
+	cursor: pointer;
+}
+
+.anime-view {
+	width: auto;
+	height: auto;
+	padding: 20px !important;
+	background: url("https://www.wallpaperflare.com/static/462/400/926/anime-landscape-stars-sky-wallpaper.jpg")
+		no-repeat;
+	background-size: cover;
+	width: 101vw;
+	position: relative;
+	left: calc(-50vw + 48%);
+}
+
+.hideDice {
+	display: none !important;
+}
+
+.reduced-dice {
+	width: 60px;
+	cursor: pointer !important;
+}

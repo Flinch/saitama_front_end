@@ -5,6 +5,7 @@ import axios from "axios";
 import "./App.css";
 import Home from "./Home";
 import Collections from "./Collections";
+import Discovery from "./Discovery";
 import LandingPage from "../sessions/LandingPage";
 import ls from "local-storage";
 import DarkMode from "./DarkMode.js";
@@ -120,35 +121,46 @@ class App extends React.Component {
 						<div className="pusher">
 							<Redirect to="/home" />
 							<Segment basic>
-								<div className="ui Segment two-item">
-									<div className=" ui two item menu">
-										<Menu.Item
-											id="menu1"
-											as={Link}
-											to="/home"
-											name="home"
-											active={
-												this.state.activeItem === "home"
-											}
-											onClick={this.handleItemClick}
-										>
-											Home
-										</Menu.Item>
+								<div className=" ui three item menu">
+									<Menu.Item
+										id="menu1"
+										as={Link}
+										to="/home"
+										name="home"
+										active={
+											this.state.activeItem === "home"
+										}
+										onClick={this.handleItemClick}
+									>
+										Home
+									</Menu.Item>
 
-										<Menu.Item
-											id="menu2"
-											as={Link}
-											to="/collections"
-											name="collections"
-											active={
-												this.state.activeItem ===
-												"collections"
-											}
-											onClick={this.handleItemClick}
-										>
-											Collections
-										</Menu.Item>
-									</div>
+									<Menu.Item
+										id="menu2"
+										as={Link}
+										to="/collections"
+										name="collections"
+										active={
+											this.state.activeItem ===
+											"collections"
+										}
+										onClick={this.handleItemClick}
+									>
+										Collections
+									</Menu.Item>
+									<Menu.Item
+										id="menu3"
+										as={Link}
+										to="/discovery"
+										name="discovery"
+										active={
+											this.state.activeItem ===
+											"discovery"
+										}
+										onClick={this.handleItemClick}
+									>
+										Discovery
+									</Menu.Item>
 								</div>
 
 								<Switch>
@@ -160,8 +172,8 @@ class App extends React.Component {
 											userID={this.state.userID}
 										/>
 									</Route>
-									<Route path="/about">
-										<Home />
+									<Route path="/discovery">
+										<Discovery />
 									</Route>
 								</Switch>
 							</Segment>
