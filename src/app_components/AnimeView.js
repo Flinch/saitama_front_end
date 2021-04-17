@@ -12,35 +12,41 @@ const AnimeView = ({ anime }) => {
 	const [genreArry, setgenreArry] = useState([]);
 	const [hide, setHide] = useState(0);
 
-	useEffect(async () => {
+	useEffect(() => {
 		setHide(0);
+		setgenreArry([]);
 
 		try {
 			axios.get(`https://api.jikan.moe/v3/anime/${anime}`).then((res) => {
 				setAnimeDetail(res.data);
-				try {
-					const response = youtube.get("/search", {
-						params: { q: `${animeDetail.title} trailer anime` },
-					});
-					console.log(response);
 
-					setTrailerURL(
-						`https://www.youtube.com/embed/${response.data.items[0].id.videoId}`
-					);
-				} catch (err) {
-					console.log(err);
-					if (res.data.trailer_url != null) {
+				youtube
+					.get("/search", {
+						params: {
+							q: `${res.data.title} trailer anime`,
+						},
+					})
+					.then((res) => {
 						setTrailerURL(
-							res.data.trailer_url.replace(
-								"autoplay=1",
-								"autoplay=0"
-							)
+							`https://www.youtube.com/embed/${res.data.items[0].id.videoId}`
 						);
-					} else {
-						setHide(1);
-					}
-				}
-				setgenreArry([]);
+					})
+					.catch((error) => {
+						console.error(
+							"onRejected function called: " + error.message
+						);
+						if (res.data.trailer_url != null) {
+							setTrailerURL(
+								res.data.trailer_url.replace(
+									"autoplay=1",
+									"autoplay=0"
+								)
+							);
+						} else {
+							setHide(1);
+						}
+					});
+
 				res.data.genres.map((g) => {
 					setgenreArry((genreArry) => genreArry.concat(g.name));
 				});
