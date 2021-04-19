@@ -68,6 +68,11 @@ class Discovery extends React.Component {
 		return this.state.randomAnime.some(check);
 	};
 
+	animeFilterPass = (anime) => {
+		if (anime.score > 7) return true;
+		return false;
+	};
+
 	onInputClick = () => {
 		this.setState({ randomAnime: [], isLoading: 1, hideButton: 1 }, () => {
 			this.generateRandomAnime();
@@ -98,7 +103,8 @@ class Discovery extends React.Component {
 						var anime_results = res.data.results[animeNumber];
 						if (
 							!this.inCollection(anime_results) &&
-							!this.inCurrentList(anime_results)
+							!this.inCurrentList(anime_results) &&
+							this.animeFilterPass(anime_results)
 						)
 							anime_res.push(anime_results);
 					});
@@ -115,7 +121,7 @@ class Discovery extends React.Component {
 				});
 
 				this.onAnimeSelected(this.state.randomAnime[0].mal_id, 0);
-			}, 2000);
+			}, 1000);
 		});
 	};
 
@@ -123,7 +129,10 @@ class Discovery extends React.Component {
 		return (
 			<div>
 				{this.state.animeView ? (
-					<AnimeView anime={this.state.animeSelectedID} />
+					<AnimeView
+						anime={this.state.animeSelectedID}
+						userID={this.props.userID}
+					/>
 				) : (
 					""
 				)}

@@ -6,11 +6,6 @@ import "./App.css";
 import TextTruncate from "react-text-truncate";
 
 const AnimePost = ({ anime, animeSelected, index, selected }) => {
-	const [status, setStatus] = useState({
-		notice: "Add to List",
-		statusColor: "",
-	});
-
 	const API_URL = "https://saitama-back.herokuapp.com/";
 
 	useEffect(() => {});

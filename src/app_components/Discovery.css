@@ -10,24 +10,39 @@
 	margin-left: 35px;
 	width: 21% !important;
 	color: white;
+	text-align: center;
+	font-size: 15px;
 }
 
 .title {
 	text-align: center;
-	width: 40% !important;
+	width: 43% !important;
 	color: white;
+	margin-left: 65px;
 }
 
 .synopsis {
-	margin-left: 45px;
 	overflow: auto;
-	max-height: 300px;
+	max-height: 315px;
 	color: white !important;
 }
 
 .synopsis-title {
 	color: #ff1d8e !important;
-	margin: 40px 0px 15px 45px;
+	margin-bottom: 10px;
+}
+
+.synopsis-col {
+	margin: 60px 0px 0px 0px;
+	width: 28% !important;
+}
+
+.mt-180 {
+	margin-top: 180px;
+}
+
+.ui.embed {
+	background: none;
 }
 
 .button-container {
@@ -68,6 +83,15 @@
 	color: #ff1d8e;
 }
 
+.hotp-back:hover {
+	background-color: #ff1d8e !important;
+	color: white !important;
+}
+
+.ui.button.hotp-back {
+	font-size: 0.9rem !important;
+}
+
 .ui.grid.random-bar {
 	margin: 10px 0px 0px 115px !important;
 }
@@ -79,7 +103,7 @@
 .anime-view {
 	width: auto;
 	height: auto;
-	padding: 20px !important;
+	padding: 10px !important;
 	background: url("https://www.wallpaperflare.com/static/462/400/926/anime-landscape-stars-sky-wallpaper.jpg")
 		no-repeat;
 	background-size: cover;

@@ -173,7 +173,7 @@ class App extends React.Component {
 										/>
 									</Route>
 									<Route path="/discovery">
-										<Discovery />
+										<Discovery userID={this.state.userID} />
 									</Route>
 								</Switch>
 							</Segment>
