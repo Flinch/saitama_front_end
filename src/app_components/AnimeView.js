@@ -5,6 +5,7 @@ import AOS from "aos";
 import youtube from "../api/youtube";
 import loader from "../Loading";
 import error from "../img/error.png";
+import { onAnimeSelected } from "./AnimePost.js";
 
 const AnimeView = ({ anime, userID }) => {
     const [animeDetail, setAnimeDetail] = useState({});

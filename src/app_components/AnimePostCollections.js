@@ -35,15 +35,11 @@ const AnimePostCollections = ({ anime, userID, triggerRefresh, editClick }) => {
 				<div className="content">
 					<p className="ui center aligned header">{anime.title}</p>
 				</div>
-				<div className="ui slide masked reveal image">
+				<div className="ui image">
 					<img
 						src={anime.image}
 						className="visible content max-height"
 					/>
-					<div className="hidden content slide">
-						{" "}
-						<p className="text-black"> {anime.description} </p>{" "}
-					</div>
 				</div>
 				{showDelete ? (
 					<div

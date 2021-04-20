@@ -15,7 +15,7 @@ const AnimePost = ({ anime, userID, duration }) => {
 
 	useEffect(() => {
 		AOS.init({});
-	}, []);
+	}, [anime]);
 
 	const onAnimeSelected = () => {
 		fetch(`${API_URL}getanime?anime=${anime.mal_id}&userID=${userID}`, {

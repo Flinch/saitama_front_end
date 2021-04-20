@@ -3,7 +3,7 @@ import AnimePost from "./AnimePost";
 import "./AnimeListings.css";
 
 const AnimeListings = ({ anime_data, userID, username }) => {
-	const Listings = anime_data.map((anime, index) => {
+	const Listings = anime_data.map((anime) => {
 		return (
 			<AnimePost
 				anime={anime}
