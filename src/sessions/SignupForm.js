@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import ErrorBar from "../ErrorBar";
+import ErrorBar from "../app_components/Other/ErrorBar";
 import "../app_components/App.css";
 
 const SignupForm = ({ OnLoginSubmit }) => {

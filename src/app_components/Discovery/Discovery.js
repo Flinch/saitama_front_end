@@ -1,10 +1,10 @@
 import React from "react";
 import axios from "axios";
 import RandomBar from "./RandomBar";
-import LoadingBar from "../Loading.js";
+import LoadingBar from "../Other/Loading.js";
 import AnimeView from "./AnimeView";
 import ls from "local-storage";
-import dice from "../img/dice.svg";
+import dice from "../../img/dice.svg";
 import "./Discovery.css";
 
 const genre = [

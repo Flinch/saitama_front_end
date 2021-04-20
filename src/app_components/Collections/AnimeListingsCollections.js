@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import AnimePostCollections from "./AnimePostCollections";
 import { Icon, Popup } from "semantic-ui-react";
-import "./AnimeListings.css";
+import "../Search/AnimeListings.css";
 
 const AnimeListingsCollections = ({ anime_data, userID, triggerRefresh }) => {
 	const [editClick, setEditClick] = useState(0);

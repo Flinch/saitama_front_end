@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 import "./AnimeListings.css";
 import AOS from "aos";
 import "aos/dist/aos.css";
-import "./App.css";
+import "../App.css";
 import TextTruncate from "react-text-truncate";
 
 const AnimePost = ({ anime, userID, duration }) => {

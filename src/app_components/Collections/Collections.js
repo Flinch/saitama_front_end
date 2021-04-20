@@ -1,9 +1,8 @@
 import React, { useState, useEffect } from "react";
 import SuchEmpty from "./SuchEmpty";
 import AnimeListingsCollections from "./AnimeListingsCollections";
-import Loading from "../Loading";
+import Loading from "../Other/Loading";
 import SearchBarCollections from "./SearchBarCollections";
-import SearchPage from "./SearchPage";
 
 class Collections extends React.Component {
 	state = {

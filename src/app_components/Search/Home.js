@@ -2,13 +2,13 @@ import React from "react";
 import ReactDOM from "react-dom";
 import SearchBar from "./SearchBar";
 import axios from "axios";
-import ErrorBar from "../ErrorBar";
+import ErrorBar from "../Other/ErrorBar";
 import AnimeListings from "./AnimeListings";
-import saitama from "../img/saitama-50.svg";
-import Loading from "../Loading";
+import saitama from "../../img/saitama-50.svg";
+import Loading from "../Other/Loading";
 import AOS from "aos";
 import "aos/dist/aos.css";
-import "./App.css";
+import "../App.css";
 
 class Home extends React.Component {
 	state = {

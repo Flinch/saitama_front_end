@@ -3,12 +3,12 @@ import _ from "lodash";
 import ReactDOM from "react-dom";
 import axios from "axios";
 import "./App.css";
-import Home from "./Home";
-import Collections from "./Collections";
-import Discovery from "./Discovery";
+import Home from "./Search/Home";
+import Collections from "./Collections/Collections";
+import Discovery from "./Discovery/Discovery";
 import LandingPage from "../sessions/LandingPage";
 import ls from "local-storage";
-import DarkMode from "./DarkMode.js";
+import DarkMode from "./Other/DarkMode.js";
 import {
 	Button,
 	Grid,

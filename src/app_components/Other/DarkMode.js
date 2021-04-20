@@ -1,7 +1,7 @@
 import React from "react";
 import "./DarkMode.css";
-import sun from "../img/sun.png";
-import moon from "../img/moon.png";
+import sun from "../../img/sun.png";
+import moon from "../../img/moon.png";
 
 const DarkMode = () => {
   let clickedClass = "clicked";

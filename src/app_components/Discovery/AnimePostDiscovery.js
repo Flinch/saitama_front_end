@@ -1,8 +1,7 @@
 import React, { useState, useEffect } from "react";
-import "./AnimeListings.css";
+import "../Search/AnimeListings.css";
 import AOS from "aos";
-import "aos/dist/aos.css";
-import "./App.css";
+import "../App.css";
 import TextTruncate from "react-text-truncate";
 
 const AnimePost = ({ anime, animeSelected, index, selected }) => {

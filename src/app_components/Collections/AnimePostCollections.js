@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
-import "./AnimeListings.css";
-import "./App.css";
+import "../Search/AnimeListings.css";
+import "../App.css";
 
 const AnimePostCollections = ({ anime, userID, triggerRefresh, editClick }) => {
 	const [status, setStatus] = useState("");

@@ -2,10 +2,9 @@ import React, { useState, useEffect } from "react";
 import axios from "axios";
 import "./Discovery.css";
 import AOS from "aos";
-import youtube from "../api/youtube";
-import loader from "../Loading";
-import error from "../img/error.png";
-import { onAnimeSelected } from "./AnimePost.js";
+import youtube from "../../api/youtube";
+import loader from "../Other/Loading";
+import error from "../../img/error.png";
 
 const AnimeView = ({ anime, userID }) => {
     const [animeDetail, setAnimeDetail] = useState({});
